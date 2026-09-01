@@ -215,32 +215,39 @@
 
         .contact-box {
             margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
         }
 
         .contact-title {
             color: #fff;
             font-size: 1.2rem;
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.4rem;
         }
 
-        .phone-link {
+        .contact-link {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 10px;
             background-color: #21262d;
             color: var(--accent-color);
             padding: 0.8rem 1.8rem;
             border-radius: 30px;
             border: 1px solid var(--border-color);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
             text-decoration: none;
-            transition: background-color 0.2s, border-color 0.2s;
+            transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
+            max-width: 90%;
         }
 
-        .phone-link:hover {
+        .contact-link:hover {
             background-color: #30363d;
             border-color: var(--accent-color);
+            transform: translateY(-2px);
         }
 
         .copyright-section {
@@ -346,9 +353,12 @@
 
     <footer>
         <div class="contact-box">
-            <div class="contact-title">Müşteri Hizmetleri & Bilgi Hattı</div>
-            <a href="tel:+908503075458" class="phone-link">
+            <div class="contact-title">Müşteri Hizmetleri & İletişim</div>
+            <a href="tel:+908503075458" class="contact-link">
                 📞 +90 850 307 5458
+            </a>
+            <a href="https://maps.google.com/maps?ll=41.032256,28.920015&z=17&t=m&hl=tr&gl=TR&mapclient=embed&cid=12095621459922215308" target="_blank" rel="noopener noreferrer" class="contact-link">
+                📍 Google Haritalar'da Konumu Görüntüle
             </a>
         </div>
         <div class="copyright-section">

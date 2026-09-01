@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XMAX Modifiye & Tuning Hizmetleri</title>
+    <title>XMAX Modifiye & Tuning Hizmetleri | Bosphorus Innovations</title>
     <style>
         :root {
             --bg-color: #0d1117;
@@ -26,7 +26,7 @@
         header {
             background-color: var(--card-bg);
             border-bottom: 1px solid var(--border-color);
-            padding: 2rem 1rem;
+            padding: 2.5rem 1rem;
             text-align: center;
         }
 
@@ -34,22 +34,23 @@
             margin: 0;
             color: var(--accent-color);
             font-size: 2.2rem;
+            letter-spacing: 0.5px;
         }
 
         header p {
             margin-top: 0.5rem;
             color: var(--text-secondary);
+            font-size: 1.05rem;
         }
 
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 2rem 1rem;
+            padding: 2.5rem 1rem;
         }
 
-        /* Ana Başlık (Kategori) Stili */
         .category-section {
-            margin-bottom: 3rem;
+            margin-bottom: 3.5rem;
         }
 
         .category-title {
@@ -57,65 +58,103 @@
             color: var(--accent-color);
             border-bottom: 2px solid var(--accent-color);
             padding-bottom: 0.5rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
             display: inline-block;
         }
 
-        /* Ürün Izgarası */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.8rem;
         }
 
-        /* Ürün Kartı Stili */
         .product-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 8px;
+            border-radius: 10px;
             overflow: hidden;
-            transition: transform 0.2s, border-color 0.2s;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+            display: flex;
+            flex-direction: column;
         }
 
         .product-card:hover {
-            transform: translateY(-4px);
+            transform: translateY(-5px);
             border-color: var(--accent-color);
+            box-shadow: 0 8px 24px rgba(255, 107, 0, 0.15);
+        }
+
+        .image-container {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            background-color: #21262d;
         }
 
         .product-image {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
-            background-color: #21262d;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .image-container:hover .product-image {
+            transform: scale(1.03);
+        }
+
+        .zoom-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .image-container:hover .zoom-overlay {
+            opacity: 1;
         }
 
         .product-info {
-            padding: 1.25rem;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .product-title {
-            font-size: 1.2rem;
-            margin: 0 0 0.5rem 0;
+            font-size: 1.25rem;
+            margin: 0 0 0.6rem 0;
+            color: #fff;
         }
 
         .product-description {
             color: var(--text-secondary);
             font-size: 0.95rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
         }
 
         .product-features {
             list-style: none;
             padding: 0;
-            margin: 0;
-            font-size: 0.85rem;
+            margin: 0 0 1rem 0;
+            font-size: 0.88rem;
             color: var(--text-secondary);
         }
 
         .product-features li {
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.4rem;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
         }
 
         .product-features li::before {
@@ -123,15 +162,97 @@
             color: var(--accent-color);
             font-weight: bold;
             display: inline-block; 
-            width: 1em;
+            width: 1.2em;
+            flex-shrink: 0;
         }
 
+        /* Modal (Lightbox) Stili */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            object-fit: contain;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-modal:hover {
+            color: var(--accent-color);
+        }
+
+        /* Alt İletişim ve Telif Alanı */
         footer {
-            text-align: center;
-            padding: 2rem;
+            background-color: var(--card-bg);
             border-top: 1px solid var(--border-color);
+            padding: 3rem 1rem 2rem 1rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .contact-box {
+            margin-bottom: 2rem;
+        }
+
+        .contact-title {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .phone-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #21262d;
+            color: var(--accent-color);
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+
+        .phone-link:hover {
+            background-color: #30363d;
+            border-color: var(--accent-color);
+        }
+
+        .copyright-section {
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.8rem;
             color: var(--text-secondary);
             font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .copyright-section p {
+            margin: 0.3rem 0;
         }
     </style>
 </head>
@@ -139,7 +260,7 @@
 
     <header>
         <h1>XMAX MODİFİYE & TUNING</h1>
-        <p>Yamaha XMAX 250 / 300 Özel Parça, Aksesuar ve Yazılım Çözümleri</p>
+        <p>Yamaha XMAX 125 / 250 / 300 Özel Parça, Aksesuar ve ECU Yazılım Çözümleri</p>
     </header>
 
     <div class="container">
@@ -149,28 +270,38 @@
             <h2 class="category-title">Performans & ECU Tuning</h2>
             <div class="product-grid">
 
-                <!-- Ürün 1 -->
+                <!-- Ürün 1: ECU Remap -->
                 <article class="product-card">
-                    <img src="preview.jpg" alt="ECU Remap" class="product-image">
+                    <div class="image-container" onclick="openModal('xmaxyazilim.jpg')">
+                        <img src="xmaxyazilim.jpg" alt="XMAX ECU Yazılım ve Tuning" class="product-image">
+                        <div class="zoom-overlay">🔍 Büyütmek için tıklayın</div>
+                    </div>
                     <div class="product-info">
-                        <h3 class="product-title">Özel ECU Kalibrasyonu & Remap</h3>
-                        <p class="product-description">Orjinal ECU için Dyno üzerinde özel olarak geliştirilmiş yakıt ve ateşleme haritası.</p>
+                        <h3 class="product-title">Özel ECU Kalibrasyonu & Remap (2017-2026)</h3>
+                        <p class="product-description">2017-2026 arası tüm XMAX 125, 250 ve 300 modelleri için orijinal ECU üzerinde Dyno ortamında geliştirilmiş özel yazılım ve tuning hizmeti.</p>
                         <ul class="product-features">
-                            <li>Optimized AFR geçişleri</li>
-                            <li>Devir kesici düzenlemesi</li>
-                            <li>Hız / Tork limitör güncellemeleri</li>
+                            <li>Orijinal ECU için Dyno özel yakıt ve ateşleme haritası</li>
+                            <li>AFR ayarı ve hassas enjeksiyon yönetimi</li>
+                            <li>Devir kesici (Rev Limiter) seviye düzenlemesi</li>
+                            <li>Hız ve tork limitör güncellemeleri</li>
+                            <li>Canlı veri analizi, Lambda takibi ve arıza geçmişi temizleme</li>
+                            <li>İsteğe bağlı 0-100 km/s hızlanma süresi ve dinanometre güç ölçümleri</li>
                         </ul>
                     </div>
                 </article>
 
                 <!-- Ürün 2: Fren Kaliper Adaptörü -->
                 <article class="product-card">
-                    <img src="xmaxcaliperadaptor.jpg" alt="300mm Fren Kaliper Montaj Aparatı" class="product-image">
+                    <div class="image-container" onclick="openModal('xmaxcaliperadaptor.jpg')">
+                        <img src="xmaxcaliperadaptor.jpg" alt="300mm Fren Kaliper Montaj Aparatı" class="product-image">
+                        <div class="zoom-overlay">🔍 Büyütmek için tıklayın</div>
+                    </div>
                     <div class="product-info">
                         <h3 class="product-title">300mm Fren Kaliperi Montaj Aparatı</h3>
                         <p class="product-description">XMAX 250 ve 300 (2017-2026) kasalarla tam uyumlu, R25 / MT25 300mm disk dönüşüm braketi.</p>
                         <ul class="product-features">
-                            <li>7075 Havacılık serisi billet alüminyum CNC işleme</li>
+                            <li>7075 Havacılık serisi billet alüminyumdan CNC işleme</li>
+                            <li>Sert anodik koruyucu kaplama</li>
                             <li>Yüksek hızlarda esnemeyen monoblok yapı</li>
                             <li>Orijinal noktalarla %100 cıvata uyumu (Plug & Play)</li>
                         </ul>
@@ -182,19 +313,22 @@
 
         <!-- KATEGORİ 2: Özel Tasarım Aksesuarlar -->
         <section class="category-section">
-            <h2 class="category-title">Özel Tasarım Accessories</h2>
+            <h2 class="category-title">Özel Tasarım Aksesuarlar</h2>
             <div class="product-grid">
 
-                <!-- Ürün 3 -->
+                <!-- Ürün 3: Frunk-Max -->
                 <article class="product-card">
-                    <img src="Frunk.jpg" alt="Frunk-Max" class="product-image">
+                    <div class="image-container" onclick="openModal('Frunk.jpg')">
+                        <img src="Frunk.jpg" alt="Frunk-Max Ön Torpido Saklama Alanı" class="product-image">
+                        <div class="zoom-overlay">🔍 Büyütmek için tıklayın</div>
+                    </div>
                     <div class="product-info">
                         <h3 class="product-title">Frunk-Max Ön Torpido Saklama Alanı</h3>
                         <p class="product-description">Gidon kapağı yerine tam oturan, PETG malzemeden üretilmiş ekstra saklama gözü.</p>
                         <ul class="product-features">
-                            <li>Isıya ve UV ışınlarına dayanıklı PETG</li>
+                            <li>Isıya ve UV ışınlarına dayanıklı PETG malzeme</li>
                             <li>Orijinal montaj noktalarına birebir uyum</li>
-                            <li>Kolay montaj imkanı</li>
+                            <li>Pratik ve kolay montaj imkanı</li>
                         </ul>
                     </div>
                 </article>
@@ -204,9 +338,43 @@
 
     </div>
 
+    <!-- Fotoğraf Büyütme Modal Pencereli Yapı -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImage" alt="Büyütülmüş Görsel">
+    </div>
+
     <footer>
-        <p>&copy; 2026 xmaxmodifiye.com.tr - Tüm hakları saklıdır.</p>
+        <div class="contact-box">
+            <div class="contact-title">Müşteri Hizmetleri & Bilgi Hattı</div>
+            <a href="tel:+908503075458" class="phone-link">
+                📞 +90 850 307 5458
+            </a>
+        </div>
+        <div class="copyright-section">
+            <p>&copy; 2026 xmaxmodifiye.com.tr - Tüm hakları saklıdır.</p>
+            <p>Bir Prodimar LTD ŞTİ markasıdır.</p>
+        </div>
     </footer>
+
+    <script>
+        function openModal(imgSrc) {
+            var modal = document.getElementById("imageModal");
+            var modalImg = document.getElementById("modalImage");
+            modal.style.display = "flex";
+            modalImg.src = imgSrc;
+        }
+
+        function closeModal() {
+            document.getElementById("imageModal").style.display = "none";
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        });
+    </script>
 
 </body>
 </html>

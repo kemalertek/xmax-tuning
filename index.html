@@ -3,211 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>XMAX Modifiye & Tuning Hizmetleri</title>
+    <title>Yamaha XMAX Frunk-Max | Akıllı Saklama Bölmesi</title>
     <style>
         :root {
-            --bg-color: #0d1117;
+            --bg-dark: #0b0e14;
             --card-bg: #161b22;
-            --accent-color: #ff6b00;
-            --text-color: #f0f6fc;
-            --text-secondary: #8b949e;
+            --accent-orange: #ff6b00;
+            --text-light: #f0f6fc;
+            --text-gray: #8b949e;
             --border-color: #30363d;
         }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--bg-dark);
+            color: var(--text-light);
             margin: 0;
             padding: 0;
             line-height: 1.6;
         }
 
-        header {
-            background-color: var(--card-bg);
-            border-bottom: 1px solid var(--border-color);
-            padding: 2rem 1rem;
+        /* Hero Banner */
+        .hero {
+            position: relative;
             text-align: center;
+            background: linear-gradient(180deg, rgba(11,14,20,0.4) 0%, rgba(11,14,20,1) 100%);
+            padding: 2rem 1rem 3rem 1rem;
         }
 
-        header h1 {
-            margin: 0;
-            color: var(--accent-color);
+        .hero-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(255, 107, 0, 0.15);
+            border: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            color: var(--accent-orange);
             font-size: 2.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        header p {
-            margin-top: 0.5rem;
-            color: var(--text-secondary);
+        .hero p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         .container {
-            max-width: 1100px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 2rem 1rem;
         }
 
-        /* Ana Başlık (Kategori) Stili */
-        .category-section {
-            margin-bottom: 3rem;
+        /* Özellik Kartları */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
         }
 
-        .category-title {
+        .feature-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-orange);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-title {
+            font-size: 1.1rem;
+            color: var(--accent-orange);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Montaj & Teknik Özellikler */
+        .section-title {
             font-size: 1.6rem;
-            color: var(--accent-color);
-            border-bottom: 2rem;
-            border-bottom: 2px solid var(--accent-color);
+            border-bottom: 2px solid var(--accent-orange);
             padding-bottom: 0.5rem;
+            margin-top: 3rem;
             margin-bottom: 1.5rem;
             display: inline-block;
         }
 
-        /* Ürün Izgarası */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+        .specs-table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 2rem;
         }
 
-        /* Ürün Kartı Stili */
-        .product-card {
+        .specs-table th, .specs-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        .specs-table th {
+            background-color: #21262d;
+            color: var(--accent-orange);
+        }
+
+        .steps-list {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.2s, border-color 0.2s;
+            padding: 1.5rem 1.5rem 1.5rem 2.5rem;
         }
 
-        .product-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent-color);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            background-color: #21262d;
-        }
-
-        .product-info {
-            padding: 1.25rem;
-        }
-
-        .product-title {
-            font-size: 1.2rem;
-            margin: 0 0 0.5rem 0;
-        }
-
-        .product-description {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-
-        .product-features {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        .product-features li {
-            margin-bottom: 0.3rem;
-            display: flex;
-            align-items: center;
-        }
-
-        .product-features li::before {
-            content: "•";
-            color: var(--accent-color);
-            font-weight: bold;
-            display: inline-block; 
-            width: 1em;
+        .steps-list li {
+            margin-bottom: 0.8rem;
+            color: var(--text-light);
         }
 
         footer {
             text-align: center;
             padding: 2rem;
             border-top: 1px solid var(--border-color);
-            color: var(--text-secondary);
+            color: var(--text-gray);
             font-size: 0.9rem;
+            margin-top: 3rem;
+        }
+
+        /* WhatsApp / Sipariş Butonu */
+        .btn-order {
+            display: inline-block;
+            background-color: var(--accent-orange);
+            color: #fff;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            font-weight: bold;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            margin-top: 1.5rem;
+            transition: background 0.2s;
+        }
+
+        .btn-order:hover {
+            background-color: #e05d00;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>XMAX MODİFİYE & TUNING</h1>
-        <p>Yamaha XMAX 300 Özel Parça, Aksesuar ve Yazılım Çözümleri</p>
-    </header>
+    <section class="hero">
+        <div class="container">
+            <img src="watermarked_img_12050419761828768471.jpg" alt="Yamaha XMAX Frunk-Max" class="hero-img">
+            <h1>YAMAHA XMAX FRUNK-MAX</h1>
+            <p>Gidonunuzdaki Atıl Alanı Akıllı Bir Bölmeye Dönüştürün! (2017-2026 Modelleriyle Tam Uyumlu)</p>
+            <a href="https://wa.me/90XXXXXXXXXX" class="btn-order">Sipariş Ver / WhatsApp</a>
+        </div>
+    </section>
 
     <div class="container">
 
-        <!-- KATEGORİ 1: Performans & Tuning -->
-        <section class="category-section">
-            <h2 class="category-title">Performans & ECU Tuning</h2>
-            <div class="product-grid">
-
-                <!-- Ürün 1 -->
-                <article class="product-card">
-                    <img src="preview.jpg" alt="ECU Remap" class="product-image">
-                    <div class="product-info">
-                        <h3 class="product-title">Özel ECU Kalibrasyonu & Remap</h3>
-                        <p class="product-description">BMK1 ECU için Dyno üzerinde özel olarak geliştirilmiş yakıt ve ateşleme haritası.</p>
-                        <ul class="product-features">
-                            <li>Optimized AFR geçişleri</li>
-                            <li>Devir kesici düzenlemesi</li>
-                            <li>Hız / Tork limitör güncellemeleri</li>
-                        </ul>
-                    </div>
-                </article>
-
-                <!-- Ürün 2 -->
-                <article class="product-card">
-                    <img src="preview.jpg" alt="Varyatör Kiti" class="product-image">
-                    <div class="product-info">
-                        <h3 class="product-title">Performans Varyatör & Debriyaj Seti</h3>
-                        <p class="product-description">Alt ve orta devirlerde yüksek ivmelenme sağlayan özel açılandırılmış varyatör kiti.</p>
-                        <ul class="product-features">
-                            <li>Hafifletilmiş debriyaj çanı</li>
-                            <li>Özel tork yayları</li>
-                            <li>Pürüzsüz güç aktarımı</li>
-                        </ul>
-                    </div>
-                </article>
-
+        <!-- Öne Çıkan Özellikler -->
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🛡️</div>
+                <div class="feature-title">Esnek PETG Polimer</div>
+                <p>Sarsıntı sönümleyici yapısı sayesinde en bozuk yollarda bile çatlamaz, kırılmaz.</p>
             </div>
-        </section>
-
-
-        <!-- KATEGORİ 2: Özel Tasarım Aksesuarlar -->
-        <section class="category-section">
-            <h2 class="category-title">Özel Tasarım Accessories</h2>
-            <div class="product-grid">
-
-                <!-- Ürün 3 -->
-                <article class="product-card">
-                    <img src="preview.jpg" alt="Frunk-Max" class="product-image">
-                    <div class="product-info">
-                        <h3 class="product-title">Frunk-Max Ön Torpido Saklama Alanı</h3>
-                        <p class="product-description">Gidon kapağı yerine tam oturan, PETG malzemeden üretilmiş ekstra saklama gözü.</p>
-                        <ul class="product-features">
-                            <li>Isıya ve UV ışınlarına dayanıklı PETG</li>
-                            <li>Orijinal montaj noktalarına birebir uyum</li>
-                            <li>Kolay montaj imkanı</li>
-                        </ul>
-                    </div>
-                </article>
-
+            <div class="feature-card">
+                <div class="feature-icon">🧲</div>
+                <div class="feature-title">Mıknatıslı Hızlı Kapak</div>
+                <p>Neodyum mıknatıslar sayesinde eldivenle dahi tek hamlede açılır ve kapanır.</p>
             </div>
-        </section>
+            <div class="feature-card">
+                <div class="feature-icon">🌧️</div>
+                <div class="feature-title">%100 Tam Sızdırmazlık</div>
+                <p>Entegre O-ring contası ile yağmur ve yıkama sularına karşı tam koruma.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📦</div>
+                <div class="feature-title">0.4 Litre Hacim</div>
+                <p>Giriş kartları, anahtarlar, bozuk para ve boyun askıları için ideal saklama alanı.</p>
+            </div>
+        </div>
+
+        <!-- Teknik Ölçüler -->
+        <h2 class="section-title">Teknik Özellikler & Ölçüler</h2>
+        <table class="specs-table">
+            <thead>
+                <tr>
+                    <th>Detay</th>
+                    <th>Ölçü / Değer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Dış Genişlik</td>
+                    <td>139.50 mm</td>
+                </tr>
+                <tr>
+                    <td>Derinlik</td>
+                    <td>92.10 mm</td>
+                </tr>
+                <tr>
+                    <td>İç Hazne Uzunluk</td>
+                    <td>83.00 mm</td>
+                </tr>
+                <tr>
+                    <td>İç Hazne Genişlik</td>
+                    <td>60.00 mm</td>
+                </tr>
+                <tr>
+                    <td>Kapasite</td>
+                    <td>0.4 Litre</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Kurulum Adımları -->
+        <h2 class="section-title">Kolay Kurulum (Tak - Çalıştır)</h2>
+        <p>Motorunuzda herhangi bir delme veya kesme işlemi yapmanıza gerek yoktur[cite: 1]. 4 noktadan sabitleme sistemi ile maksimum stabilite sağlar.</p>
+        <ol class="steps-list">
+            <li>Orijinal kapağı sökün[cite: 1].</li>
+            <li>Kutudan çıkan yeni U-Klipsi alt yuvaya takın[cite: 1].</li>
+            <li>Orijinal 2 sekman ve kapağın içinden geçen yeni M6 civata ile 4 noktadan sabitleyin[cite: 1].</li>
+        </ol>
+
+        <div style="background-color: var(--card-bg); padding: 1rem; border-radius: 8px; border-left: 4px solid var(--accent-orange); margin-top: 1rem;">
+            <strong>Paket İçeriği:</strong> 1x Frunk-Max Gövde, 1x Yeni U-Klips, 1x Yeni M6 Montaj Civatası[cite: 1].
+        </div>
 
     </div>
 
     <footer>
-        <p>&copy; 2026 xmaxmodifiye.com.tr - Tüm hakları saklıdır.</p>
+        <p>&copy; 2026 xmaxmodifiye.com.tr - Tüm Hakları Saklıdır.</p>
     </footer>
 
 </body>

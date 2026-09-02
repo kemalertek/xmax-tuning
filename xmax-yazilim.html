@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yamaha XMAX ECU Remap & Yazılım Detayları | Bosphorus Innovations</title>
+    <title>Motosiklet ECU Remap ve Performans Yazılımı | Bosphorus Innovations</title>
     <style>
         :root {
-            --bg-color: #0d1117;
-            --card-bg: #161b22;
+            --bg-color: #0b0f19;
+            --card-bg: #151c2c;
             --accent-color: #ff6b00;
+            --accent-hover: #e05e00;
             --text-color: #f0f6fc;
-            --text-secondary: #8b949e;
-            --border-color: #30363d;
-            --table-header: #21262d;
-            --paytr-color: #00b050;
+            --text-secondary: #94a3b8;
+            --border-color: #1e293b;
+            --whatsapp-color: #25d366;
         }
 
         body {
@@ -25,354 +25,335 @@
             line-height: 1.6;
         }
 
-        header {
+        .top-nav {
             background-color: var(--card-bg);
             border-bottom: 1px solid var(--border-color);
-            padding: 2rem 1rem;
+            padding: 0.8rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .top-nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .btn-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.55rem 1.1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-home {
+            background-color: #1e293b;
+            color: var(--accent-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-home:hover {
+            background-color: #334155;
+            transform: translateY(-2px);
+        }
+
+        .btn-wa-top {
+            background-color: rgba(37, 211, 102, 0.12);
+            color: #fff;
+            border: 1px solid var(--whatsapp-color);
+        }
+
+        .btn-wa-top:hover {
+            background-color: var(--whatsapp-color);
+            transform: translateY(-2px);
+        }
+
+        header {
+            background: linear-gradient(180deg, var(--card-bg) 0%, var(--bg-color) 100%);
+            padding: 3rem 1rem 1.5rem 1rem;
             text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .badge-tag {
+            display: inline-block;
+            background-color: rgba(255, 107, 0, 0.15);
+            color: var(--accent-color);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 107, 0, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         header h1 {
             margin: 0;
-            color: var(--accent-color);
-            font-size: 2rem;
+            color: #fff;
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
         }
 
         header p {
-            margin-top: 0.5rem;
+            margin-top: 0.8rem;
             color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 2rem 1rem;
         }
 
-        .back-btn {
-            display: inline-block;
-            color: var(--accent-color);
-            text-decoration: none;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            transition: transform 0.2s;
-        }
-
-        .back-btn:hover {
-            transform: translateX(-3px);
-        }
-
-        /* Yeni Eklenen Görsel Stili */
-        .page-banner-container {
-            width: 100%;
-            margin-bottom: 2.5rem;
-            border-radius: 8px;
-            overflow: hidden;
-            border: 1px solid var(--border-color);
-            background-color: var(--table-header); /* Yüklenirken boşluk görünmemesi için */
-        }
-
-        .page-banner-img {
-            width: 100%;
-            height: auto;
-            display: block;
-            object-fit: cover; /* Gerekirse kırpma yapar */
+        .section-header {
+            margin-top: 3.5rem;
+            margin-bottom: 1.8rem;
         }
 
         .section-title {
-            color: var(--accent-color);
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.5rem;
-            margin-top: 2.5rem;
-            font-size: 1.4rem;
-        }
-
-        .table-wrapper {
-            overflow-x: auto;
-            margin-top: 1rem;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-            font-size: 0.9rem;
-        }
-
-        th, td {
-            padding: 0.85rem 1rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        th {
-            background-color: var(--table-header);
+            font-size: 1.6rem;
             color: #fff;
-            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0;
         }
 
-        tr:nth-child(even) {
-            background-color: rgba(255, 255, 255, 0.02);
+        .section-title::after {
+            content: "";
+            flex-grow: 1;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+            margin-left: 10px;
         }
 
-        .badge {
-            display: inline-block;
-            padding: 0.25rem 0.5rem;
-            border-radius: 4px;
-            font-size: 0.78rem;
-            font-weight: 600;
+        /* Performans Kartları Grid */
+        .perf-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
         }
 
-        .badge-success { background-color: rgba(37, 211, 102, 0.15); color: #25d366; }
-        .badge-warning { background-color: rgba(255, 107, 0, 0.15); color: #ff6b00; }
-
-        .cta-card {
+        .perf-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
+            border-radius: 12px;
             padding: 1.8rem;
-            border-radius: 8px;
-            margin-top: 3rem;
             text-align: center;
+            transition: all 0.3s ease;
         }
 
-        .btn-paytr {
-            display: inline-block;
-            background-color: var(--paytr-color);
+        .perf-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(255, 107, 0, 0.15);
+        }
+
+        .perf-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .perf-card h3 {
+            margin: 0 0 0.8rem 0;
             color: #fff;
-            text-decoration: none;
-            padding: 0.8rem 1.8rem;
-            border-radius: 6px;
-            font-weight: 600;
-            margin-top: 1rem;
-            transition: opacity 0.2s;
+            font-size: 1.2rem;
         }
 
-        .btn-paytr:hover {
-            opacity: 0.9;
-        }
-
-        footer {
-            text-align: center;
-            padding: 2rem 1rem;
-            border-top: 1px solid var(--border-color);
+        .perf-card p {
             color: var(--text-secondary);
-            font-size: 0.85rem;
-            margin-top: 3rem;
+            font-size: 0.92rem;
+            margin: 0;
+        }
+
+        /* Detaylı Bilgi Tablosu veya Listesi */
+        .info-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .info-list li {
+            position: relative;
+            padding: 1rem 1rem 1rem 3rem;
+            margin-bottom: 1rem;
+            background-color: #1e293b;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            font-weight: 500;
+        }
+
+        .info-list li::before {
+            content: "🚀";
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.1rem;
+        }
+
+        /* Footer / İletişim */
+        footer {
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 3.5rem 1rem 2rem 1rem;
+            text-align: center;
+            margin-top: 5rem;
+        }
+
+        .contact-box {
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: #1e293b;
+            color: var(--accent-color);
+            padding: 0.85rem 2rem;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+            font-size: 1.05rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            max-width: 90%;
+        }
+
+        .contact-link:hover {
+            background-color: #334155;
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .contact-link.whatsapp {
+            border-color: var(--whatsapp-color);
+            color: #fff;
+            background-color: rgba(37, 211, 102, 0.12);
+        }
+
+        .contact-link.whatsapp:hover {
+            background-color: var(--whatsapp-color);
+        }
+
+        .copyright-section {
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.8rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Yamaha XMAX ECU Remap & Yazılım Detayları</h1>
-        <p>Gelişmiş Teşhis, Canlı Veri Analizi ve Performans Kalibrasyonu</p>
-    </header>
-
-    <div class="container">
-        <a href="index.html" class="back-btn">← Ana Sayfaya Dön</a>
-
-        <!-- YENİ EKLENEN İNFOGRAFİK GÖRSEL -->
-        <div class="page-banner-container">
-            <img src="Xmax_yazılım_detay.jpg" alt="Yamaha XMAX ECU Remap Teknik İnfografik" class="page-banner-img">
-        </div>
-        <!-- GÖRSEL SONU -->
-
-        <!-- 1. Desteklenen XMAX Modelleri -->
-        <h2 class="section-title">1. Desteklenen XMAX Modelleri ve Protokol Listesi</h2>
-        <div class="table-wrapper">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Model</th>
-                        <th>Motor</th>
-                        <th>Yıl</th>
-                        <th>Parça / ECM Kodu</th>
-                        <th>Bağlantı Protokolü</th>
-                        <th>Durum</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>XMAX 300 - YConnect</td>
-                        <td>300cc</td>
-                        <td>2026</td>
-                        <td>BBS4 / BBS-H591A-40</td>
-                        <td>YMC1 CANBUS</td>
-                        <td><span class="badge badge-success">Aktif / Destekleniyor</span></td>
-                    </tr>
-                    <tr>
-                        <td>XMAX 300 - CANBUS</td>
-                        <td>300cc</td>
-                        <td>2024 - 2025</td>
-                        <td>BMK1 / BMK-H591A-10</td>
-                        <td>YMC1 CANBUS</td>
-                        <td><span class="badge badge-success">Aktif / Destekleniyor</span></td>
-                    </tr>
-                    <tr>
-                        <td>XMAX 300 - CANBUS</td>
-                        <td>300cc</td>
-                        <td>2021 - 2023</td>
-                        <td>BBA0 / BBA-H591A-00</td>
-                        <td>YMC1 CANBUS</td>
-                        <td><span class="badge badge-success">Aktif / Destekleniyor</span></td>
-                    </tr>
-                    <tr>
-                        <td>XMAX 300 - CANBUS</td>
-                        <td>300cc</td>
-                        <td>2022 - 2024</td>
-                        <td>B5X0 / B5X1 / B1V1</td>
-                        <td>YMC1 CANBUS / Remap</td>
-                        <td><span class="badge badge-success">Aktif / Destekleniyor</span></td>
-                    </tr>
-                    <tr>
-                        <td>XMAX 300 (Standart)</td>
-                        <td>300cc</td>
-                        <td>2017 - 2019</td>
-                        <td>B740 / B741</td>
-                        <td>K-Line</td>
-                        <td><span class="badge badge-success">Aktif / Destekleniyor</span></td>
-                    </tr>
-                    <tr>
-                        <td>XMAX 125 - SMARTKEY</td>
-                        <td>125cc</td>
-                        <td>2021</td>
-                        <td>B9Y1 / B9Y-H594A-00</td>
-                        <td>DENSO CANBUS</td>
-                        <td><span class="badge badge-success">Aktif / Destekleniyor</span></td>
-                    </tr>
-                    <tr>
-                        <td>XMAX 125 TECH</td>
-                        <td>125cc</td>
-                        <td>2024</td>
-                        <td>BMJ-H594A-10</td>
-                        <td>DENSO CANBUS</td>
-                        <td><span class="badge badge-success">Aktif / Destekleniyor</span></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- 2. Müdahale Edilebilir Haritalama ve Parametreler -->
-        <h2 class="section-title">2. ECU Müdahale ve Düzenleme Yetenekleri</h2>
-        <div class="table-wrapper">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Parametre / Bileşen</th>
-                        <th>Kategori</th>
-                        <th>Okuma (Read)</th>
-                        <th>Yazma / Düzenleme (Write)</th>
-                        <th>Açıklama</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Ateşleme Avansı (Ignition Advance)</td>
-                        <td>Haritalama / Remap</td>
-                        <td>Evet</td>
-                        <td><span class="badge badge-warning">Evet (Düzenlenebilir)</span></td>
-                        <td>Ateşleme avans haritası derece cinsinden düzenlenir.</td>
-                    </tr>
-                    <tr>
-                        <td>Manuel Y-Eksen Avans Ayarı</td>
-                        <td>Haritalama / Remap</td>
-                        <td>Evet</td>
-                        <td><span class="badge badge-warning">Evet (Manuel Müdahale)</span></td>
-                        <td>Devir/indeks noktalarında özel avans ayarı.</td>
-                    </tr>
-                    <tr>
-                        <td>Avans Güvenlik Limitleri</td>
-                        <td>Güvenlik / Limit</td>
-                        <td>Evet</td>
-                        <td><span class="badge badge-warning">5.0° - 40.0°</span></td>
-                        <td>Güvenlik limitleri dahilinde avans müdahalesi.</td>
-                    </tr>
-                    <tr>
-                        <td>ECM / ECU Sıfırlama (Reset)</td>
-                        <td>Servis İşlevi</td>
-                        <td>-</td>
-                        <td><span class="badge badge-success">Evet (Komut)</span></td>
-                        <td>ECU adaptasyon değerleri sıfırlanır.</td>
-                    </tr>
-                    <tr>
-                        <td>Geçmiş Arıza Kodları (DTC)</td>
-                        <td>Diyagnoz</td>
-                        <td>Evet</td>
-                        <td><span class="badge badge-success">Evet (Temizleme)</span></td>
-                        <td>Hafızadaki geçmiş arızalar okunur ve silinir.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- 3. Anlık Canlı Veri Takibi (Live Data) -->
-        <h2 class="section-title">3. Canlı Veri ve Sensör Analiz Kapasitesi</h2>
-        <div class="table-wrapper">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Sensör / Parametre</th>
-                        <th>Birim</th>
-                        <th>Açıklama</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Engine Speed (Motor Devri)</td>
-                        <td>RPM</td>
-                        <td>Motor anlık devir sayısı takibi.</td>
-                    </tr>
-                    <tr>
-                        <td>TP Sensor (Gaz Kelebeği)</td>
-                        <td>Derece (°) / Millivolt (mV)</td>
-                        <td>Gaz kelebeği açısı ve sensör çıkış voltajı.</td>
-                    </tr>
-                    <tr>
-                        <td>Injector Time (Enjektör Süresi)</td>
-                        <td>Milisaniye (ms)</td>
-                        <td>Enjektör püskürtme süresi takibi.</td>
-                    </tr>
-                    <tr>
-                        <td>Fuel Trim (Short-term FT)</td>
-                        <td>Yüzde (%) & Skala</td>
-                        <td>Kısa vadeli yakıt düzeltme ve karışım dengesi.</td>
-                    </tr>
-                    <tr>
-                        <td>Oxygen Sensor (Lambda)</td>
-                        <td>Millivolt (mV)</td>
-                        <td>Egzoz gazı oksijen oranı ve zengin/fakir karışım skalası.</td>
-                    </tr>
-                    <tr>
-                        <td>MAP Sensor (Manifold Basıncı)</td>
-                        <td>Kilopascal (Kpa)</td>
-                        <td>Manifold mutlak basınç/vakum değeri.</td>
-                    </tr>
-                    <tr>
-                        <td>IAT & Engine Temperature</td>
-                        <td>Derece Celsius (°C)</td>
-                        <td>Emiş havası ve motor soğutma sıvısı sıcaklığı.</td>
-                    </tr>
-                    <tr>
-                        <td>Battery Voltage (Akü Voltajı)</td>
-                        <td>Volt (V)</td>
-                        <td>Sistem çalışma voltajı ve şarj seviyesi.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <div class="cta-card">
-            <h3>XMAX Yazılım & ECU Tuning Hizmetini Şimdi Satın Alın</h3>
-            <p>Dyno üzerinde geliştirilmiş özel yazılımımızla XMAX'inizin gerçek gücünü ortaya çıkarın.</p>
-            <a href="https://www.paytr.com/link/5GMqvbD" target="_blank" rel="noopener noreferrer" class="btn-paytr">
-                💳 PAYTR ile İndirimli Satın Al
+    <!-- En Tepe Gezinme Barı (WhatsApp Eklendi) -->
+    <div class="top-nav">
+        <div class="top-nav-container">
+            <a href="index.html" class="btn-top btn-home">
+                ⬅️ Ana Sayfaya Dön
+            </a>
+            <a href="https://wa.me/908503075458" target="_blank" class="btn-top btn-wa-top">
+                💬 WhatsApp Destek Hattı
             </a>
         </div>
     </div>
 
+    <!-- Header / Başlık -->
+    <header>
+        <span class="badge-tag">Bosphorus Innovations Mühendisliği</span>
+        <h1>Motosiklet ECU Remap & Performans Yazılımı</h1>
+        <p>Motorunuzun potansiyelini serbest bırakın; güç, tork ve gaz tepkisi optimizasyonu ile üstün sürüş deneyimi yaşayın.</p>
+    </header>
+
+    <div class="container">
+
+        <!-- Güç ve Tork Artışı Görsel Kartları -->
+        <div class="section-header">
+            <h2 class="section-title">⚡ ECU Remap ile Neler Değişir?</h2>
+        </div>
+        <div class="perf-grid">
+            <div class="perf-card">
+                <div class="perf-icon">🐎</div>
+                <h3>Güç (HP) Artışı</h3>
+                <p>Orijinal motor limitleri optimize edilerek üst devirlerde belirgin beygir gücü kazanımı sağlanır.</p>
+            </div>
+            <div class="perf-card">
+                <div class="perf-icon">⚙️</div>
+                <h3>Tork Optimizasyonu</h3>
+                <p>Alt ve orta devirlerdeki çekiş düşüklükleri giderilir, ara hızlanmalarda çok daha esnek bir sürüş elde edilir.</p>
+            </div>
+            <div class="perf-card">
+                <div class="perf-icon">🏎️</div>
+                <h3>Hız ve Devir Limiti (Rev-Limiter)</h3>
+                <p>Fabrikasyon hız kesiciler ve tork limitörleri sürüş güvenliği ve pist dinamiklerine göre yeniden kalibre edilir.</p>
+            </div>
+            <div class="perf-card">
+                <div class="perf-icon">🎯</div>
+                <h3>Anlık Gaz Tepkisi</h3>
+                <p>Gaz kolu gecikmeleri (throttle lag) sıfırlanarak komutlarınıza saniyesinde yanıt veren bir motor karakteri oluşur.</p>
+            </div>
+        </div>
+
+        <!-- Detaylı Teknik Bilgiler -->
+        <div class="section-header">
+            <h2 class="section-title">🔍 Teknik Detaylar ve Süreç</h2>
+        </div>
+        <div class="info-box">
+            <ul class="info-list">
+                <li><strong>Hava-Yakıt Oranı (AFR) İyileştirmesi:</strong> Egzoz ve hava filtresi (örn. K&N) değişimlerine uygun olarak haritalandırma yapılarak motorun sağlıklı çalışması sağlanır.</li>
+                <li><strong>Sıcaklık ve Ateşleme Avansı:</strong> Avans tablosu güncellemeleri sayesinde yakıt verimliliği düşürülmeden maksimum patlama basıncı ve performans elde edilir.</li>
+                <li><strong>Güvenli Sınırlar:</strong> Tüm kalibrasyonlar motorun mekanik ömrü ve dayanıklılığı göz önünde bulundurularak dinamometre verileri ışığında özel olarak hazırlanır.</li>
+            </ul>
+        </div>
+
+    </div>
+
+    <!-- Footer / WhatsApp & İletişim Butonları -->
     <footer>
-        <p>&copy; 2026 xmaxmodifiye.com.tr - Tüm hakları saklıdır. Prodimar LTD ŞTİ.</p>
+        <div class="contact-box">
+            <a href="https://wa.me/908503075458" target="_blank" rel="noopener noreferrer" class="contact-link whatsapp">
+                💬 WhatsApp Yazılım Destek Hattı (+90 850 307 5458)
+            </a>
+            <a href="https://maps.app.goo.gl/QaksrKg1FVM9yrcQ9" target="_blank" rel="noopener noreferrer" class="contact-link">
+                🔧 Uygulama ve Montaj Noktası: Exclusive Garage (Maslak)
+            </a>
+        </div>
+        <div class="copyright-section">
+            <p>&copy; 2026 xmaxmodifiye.com.tr - Tüm hakları saklıdır.</p>
+            <p>Bir Prodimar LTD ŞTİ markasıdır.</p>
+        </div>
     </footer>
 
 </body>

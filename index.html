@@ -1,711 +1,515 @@
 <!DOCTYPE html>
-
 <html lang="tr">
-
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Yamaha XMAX ECU Remap & Yazılım Detayları | Bosphorus Innovations</title>
-
+    <title>XMAX Modifiye & Tuning Hizmetleri | Bosphorus Innovations</title>
     <style>
-
         :root {
-
             --bg-color: #0d1117;
-
             --card-bg: #161b22;
-
             --accent-color: #ff6b00;
-
             --text-color: #f0f6fc;
-
             --text-secondary: #8b949e;
-
             --border-color: #30363d;
-
-            --table-header: #21262d;
-
+            --whatsapp-color: #25d366;
+            --trendyol-color: #f27a1a;
+            --n11-color: #e31e24;
             --paytr-color: #00b050;
-
         }
-
-
 
         body {
-
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-
             background-color: var(--bg-color);
-
             color: var(--text-color);
-
             margin: 0;
-
             padding: 0;
-
             line-height: 1.6;
-
         }
-
-
 
         header {
-
             background-color: var(--card-bg);
-
             border-bottom: 1px solid var(--border-color);
-
-            padding: 2rem 1rem;
-
+            padding: 2.5rem 1rem;
             text-align: center;
-
         }
-
-
 
         header h1 {
-
             margin: 0;
-
             color: var(--accent-color);
-
-            font-size: 2rem;
-
+            font-size: 2.2rem;
+            letter-spacing: 0.5px;
         }
-
-
 
         header p {
-
             margin-top: 0.5rem;
-
             color: var(--text-secondary);
-
+            font-size: 1.05rem;
         }
-
-
 
         .container {
-
-            max-width: 1000px;
-
+            max-width: 1100px;
             margin: 0 auto;
-
-            padding: 2rem 1rem;
-
+            padding: 2.5rem 1rem;
         }
 
+        .category-section {
+            margin-bottom: 3.5rem;
+        }
 
-
-        .back-btn {
-
-            display: inline-block;
-
+        .category-title {
+            font-size: 1.6rem;
             color: var(--accent-color);
-
-            text-decoration: none;
-
-            font-weight: 600;
-
-            margin-bottom: 1.5rem;
-
-            transition: transform 0.2s;
-
-        }
-
-
-
-        .back-btn:hover {
-
-            transform: translateX(-3px);
-
-        }
-
-
-
-        .section-title {
-
-            color: var(--accent-color);
-
-            border-bottom: 1px solid var(--border-color);
-
+            border-bottom: 2px solid var(--accent-color);
             padding-bottom: 0.5rem;
-
-            margin-top: 2.5rem;
-
-            font-size: 1.4rem;
-
-        }
-
-
-
-        .table-wrapper {
-
-            overflow-x: auto;
-
-            margin-top: 1rem;
-
-            border: 1px solid var(--border-color);
-
-            border-radius: 8px;
-
-        }
-
-
-
-        table {
-
-            width: 100%;
-
-            border-collapse: collapse;
-
-            text-align: left;
-
-            font-size: 0.9rem;
-
-        }
-
-
-
-        th, td {
-
-            padding: 0.85rem 1rem;
-
-            border-bottom: 1px solid var(--border-color);
-
-        }
-
-
-
-        th {
-
-            background-color: var(--table-header);
-
-            color: #fff;
-
-            font-weight: 600;
-
-        }
-
-
-
-        tr:nth-child(even) {
-
-            background-color: rgba(255, 255, 255, 0.02);
-
-        }
-
-
-
-        .badge {
-
+            margin-bottom: 1.8rem;
             display: inline-block;
-
-            padding: 0.25rem 0.5rem;
-
-            border-radius: 4px;
-
-            font-size: 0.78rem;
-
-            font-weight: 600;
-
         }
 
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.8rem;
+        }
 
-
-        .badge-success { background-color: rgba(37, 211, 102, 0.15); color: #25d366; }
-
-        .badge-warning { background-color: rgba(255, 107, 0, 0.15); color: #ff6b00; }
-
-
-
-        .cta-card {
-
+        .product-card {
             background-color: var(--card-bg);
-
             border: 1px solid var(--border-color);
-
-            padding: 1.8rem;
-
-            border-radius: 8px;
-
-            margin-top: 3rem;
-
-            text-align: center;
-
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+            display: flex;
+            flex-direction: column;
         }
 
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 8px 24px rgba(255, 107, 0, 0.15);
+        }
 
+        .image-container {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            background-color: #21262d;
+            display: block;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .image-container:hover .product-image {
+            transform: scale(1.03);
+        }
+
+        .zoom-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+            color: #fff;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .image-container:hover .zoom-overlay {
+            opacity: 1;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .product-title {
+            font-size: 1.25rem;
+            margin: 0 0 0.6rem 0;
+            color: #fff;
+        }
+
+        .product-title a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .product-title a:hover {
+            color: var(--accent-color);
+        }
+
+        .product-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .product-features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.2rem 0;
+            font-size: 0.88rem;
+            color: var(--text-secondary);
+        }
+
+        .product-features li {
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .product-features li::before {
+            content: "•";
+            color: var(--accent-color);
+            font-weight: bold;
+            display: inline-block; 
+            width: 1.2em;
+            flex-shrink: 0;
+        }
+
+        .action-links {
+            margin-top: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            padding-top: 1rem;
+            border-top: 1px dashed var(--border-color);
+        }
+
+        .marketplace-row {
+            display: flex;
+            gap: 0.6rem;
+        }
+
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 0.65rem 0.9rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: #fff;
+            transition: opacity 0.2s, transform 0.2s;
+            text-align: center;
+        }
+
+        .btn-link:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
 
         .btn-paytr {
-
-            display: inline-block;
-
             background-color: var(--paytr-color);
-
-            color: #fff;
-
-            text-decoration: none;
-
-            padding: 0.8rem 1.8rem;
-
-            border-radius: 6px;
-
-            font-weight: 600;
-
-            margin-top: 1rem;
-
-            transition: opacity 0.2s;
-
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 0.9rem;
         }
 
-
-
-        .btn-paytr:hover {
-
-            opacity: 0.9;
-
+        .btn-detail {
+            background-color: var(--accent-color);
+            width: 100%;
+            box-sizing: border-box;
+            font-size: 0.9rem;
         }
 
+        .btn-trendyol {
+            background-color: var(--trendyol-color);
+            flex: 1;
+        }
 
+        .btn-n11 {
+            background-color: var(--n11-color);
+            flex: 1;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            object-fit: contain;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .close-modal:hover {
+            color: var(--accent-color);
+        }
 
         footer {
-
-            text-align: center;
-
-            padding: 2rem 1rem;
-
+            background-color: var(--card-bg);
             border-top: 1px solid var(--border-color);
-
-            color: var(--text-secondary);
-
-            font-size: 0.85rem;
-
-            margin-top: 3rem;
-
+            padding: 3rem 1rem 2rem 1rem;
+            text-align: center;
+            margin-top: 4rem;
         }
 
+        .contact-box {
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .contact-title {
+            color: #fff;
+            font-size: 1.2rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: #21262d;
+            color: var(--accent-color);
+            padding: 0.8rem 1.8rem;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+            font-size: 1.05rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
+            max-width: 90%;
+        }
+
+        .contact-link:hover {
+            background-color: #30363d;
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .contact-link.whatsapp {
+            border-color: var(--whatsapp-color);
+            color: #fff;
+            background-color: rgba(37, 211, 102, 0.1);
+        }
+
+        .contact-link.whatsapp:hover {
+            background-color: var(--whatsapp-color);
+            color: #fff;
+        }
+
+        .contact-icon {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .copyright-section {
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.8rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        .copyright-section p {
+            margin: 0.3rem 0;
+        }
     </style>
-
 </head>
-
 <body>
 
-
-
     <header>
-
-        <h1>Yamaha XMAX ECU Remap & Yazılım Detayları</h1>
-
-        <p>Gelişmiş Teşhis, Canlı Veri Analizi ve Performans Kalibrasyonu</p>
-
+        <h1>XMAX MODİFİYE & TUNING</h1>
+        <p>Yamaha XMAX 125 / 250 / 300 Özel Parça, Aksesuar ve ECU Yazılım Çözümleri</p>
     </header>
-
-
 
     <div class="container">
 
-        <a href="index.html" class="back-btn">← Ana Sayfaya Dön</a>
-
-
-
-        <!-- 1. Desteklenen XMAX Modelleri -->
-
-        <h2 class="section-title">1. Desteklenen XMAX Modelleri ve Protokol Listesi</h2>
-
-        <div class="table-wrapper">
-
-            <table>
-
-                <thead>
-
-                    <tr>
-
-                        <th>Model</th>
-
-                        <th>Motor</th>
-
-                        <th>Yıl</th>
-
-                        <th>Parça / ECM Kodu</th>
-
-                        <th>Bağlantı Protokolü</th>
-
-                        <th>Durum</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-
-                        <td>XMAX 300 - YConnect</td>
-
-                        <td>300cc</td>
-
-                        <td>2026</td>
-
-                        <td>BBS4 / BBS-H591A-40</td>
-
-                        <td>YMC1 CANBUS</td>
-
-                        <td><span class="badge badge-success">Aktif / Destekleniyor</span></td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>XMAX 300 - CANBUS</td>
-
-                        <td>300cc</td>
-
-                        <td>2024 - 2025</td>
-
-                        <td>BMK1 / BMK-H591A-10</td>
-
-                        <td>YMC1 CANBUS</td>
-
-                        <td><span class="badge badge-success">Aktif / Destekleniyor</span></td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>XMAX 300 - CANBUS</td>
-
-                        <td>300cc</td>
-
-                        <td>2021 - 2023</td>
-
-                        <td>BBA0 / BBA-H591A-00</td>
-
-                        <td>YMC1 CANBUS</td>
-
-                        <td><span class="badge badge-success">Aktif / Destekleniyor</span></td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>XMAX 300 - CANBUS</td>
-
-                        <td>300cc</td>
-
-                        <td>2022 - 2024</td>
-
-                        <td>B5X0 / B5X1 / B1V1</td>
-
-                        <td>YMC1 CANBUS / Remap</td>
-
-                        <td><span class="badge badge-success">Aktif / Destekleniyor</span></td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>XMAX 300 (Standart)</td>
-
-                        <td>300cc</td>
-
-                        <td>2017 - 2019</td>
-
-                        <td>B740 / B741</td>
-
-                        <td>K-Line</td>
-
-                        <td><span class="badge badge-success">Aktif / Destekleniyor</span></td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>XMAX 125 - SMARTKEY</td>
-
-                        <td>125cc</td>
-
-                        <td>2021</td>
-
-                        <td>B9Y1 / B9Y-H594A-00</td>
-
-                        <td>DENSO CANBUS</td>
-
-                        <td><span class="badge badge-success">Aktif / Destekleniyor</span></td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>XMAX 125 TECH</td>
-
-                        <td>125cc</td>
-
-                        <td>2024</td>
-
-                        <td>BMJ-H594A-10</td>
-
-                        <td>DENSO CANBUS</td>
-
-                        <td><span class="badge badge-success">Aktif / Destekleniyor</span></td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-
-
-        <!-- 2. Müdahale Edilebilir Haritalama ve Parametreler -->
-
-        <h2 class="section-title">2. ECU Müdahale ve Düzenleme Yetenekleri</h2>
-
-        <div class="table-wrapper">
-
-            <table>
-
-                <thead>
-
-                    <tr>
-
-                        <th>Parametre / Bileşen</th>
-
-                        <th>Kategori</th>
-
-                        <th>Okuma (Read)</th>
-
-                        <th>Yazma / Düzenleme (Write)</th>
-
-                        <th>Açıklama</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-
-                        <td>Ateşleme Avansı (Ignition Advance)</td>
-
-                        <td>Haritalama / Remap</td>
-
-                        <td>Evet</td>
-
-                        <td><span class="badge badge-warning">Evet (Düzenlenebilir)</span></td>
-
-                        <td>Ateşleme avans haritası derece cinsinden düzenlenir.</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Manuel Y-Eksen Avans Ayarı</td>
-
-                        <td>Haritalama / Remap</td>
-
-                        <td>Evet</td>
-
-                        <td><span class="badge badge-warning">Evet (Manuel Müdahale)</span></td>
-
-                        <td>Devir/indeks noktalarında özel avans ayarı.</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Avans Güvenlik Limitleri</td>
-
-                        <td>Güvenlik / Limit</td>
-
-                        <td>Evet</td>
-
-                        <td><span class="badge badge-warning">5.0° - 40.0°</span></td>
-
-                        <td>Güvenlik limitleri dahilinde avans müdahalesi.</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>ECM / ECU Sıfırlama (Reset)</td>
-
-                        <td>Servis İşlevi</td>
-
-                        <td>-</td>
-
-                        <td><span class="badge badge-success">Evet (Komut)</span></td>
-
-                        <td>ECU adaptasyon değerleri sıfırlanır.</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Geçmiş Arıza Kodları (DTC)</td>
-
-                        <td>Diyagnoz</td>
-
-                        <td>Evet</td>
-
-                        <td><span class="badge badge-success">Evet (Temizleme)</span></td>
-
-                        <td>Hafızadaki geçmiş arızalar okunur ve silinir.</td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-
-
-        <!-- 3. Anlık Canlı Veri Takibi (Live Data) -->
-
-        <h2 class="section-title">3. Canlı Veri ve Sensör Analiz Kapasitesi</h2>
-
-        <div class="table-wrapper">
-
-            <table>
-
-                <thead>
-
-                    <tr>
-
-                        <th>Sensör / Parametre</th>
-
-                        <th>Birim</th>
-
-                        <th>Açıklama</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    <tr>
-
-                        <td>Engine Speed (Motor Devri)</td>
-
-                        <td>RPM</td>
-
-                        <td>Motor anlık devir sayısı takibi.</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>TP Sensor (Gaz Kelebeği)</td>
-
-                        <td>Derece (°) / Millivolt (mV)</td>
-
-                        <td>Gaz kelebeği açısı ve sensör çıkış voltajı.</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Injector Time (Enjektör Süresi)</td>
-
-                        <td>Milisaniye (ms)</td>
-
-                        <td>Enjektör püskürtme süresi takibi.</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Fuel Trim (Short-term FT)</td>
-
-                        <td>Yüzde (%) & Skala</td>
-
-                        <td>Kısa vadeli yakıt düzeltme ve karışım dengesi.</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Oxygen Sensor (Lambda)</td>
-
-                        <td>Millivolt (mV)</td>
-
-                        <td>Egzoz gazı oksijen oranı ve zengin/fakir karışım skalası.</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>MAP Sensor (Manifold Basıncı)</td>
-
-                        <td>Kilopascal (Kpa)</td>
-
-                        <td>Manifold mutlak basınç/vakum değeri.</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>IAT & Engine Temperature</td>
-
-                        <td>Derece Celsius (°C)</td>
-
-                        <td>Emiş havası ve motor soğutma sıvısı sıcaklığı.</td>
-
-                    </tr>
-
-                    <tr>
-
-                        <td>Battery Voltage (Akü Voltajı)</td>
-
-                        <td>Volt (V)</td>
-
-                        <td>Sistem çalışma voltajı ve şarj seviyesi.</td>
-
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-
-
-        <div class="cta-card">
-
-            <h3>XMAX Yazılım & ECU Tuning Hizmetini Şimdi Satın Alın</h3>
-
-            <p>Dyno üzerinde geliştirilmiş özel yazılımımızla XMAX'inizin gerçek gücünü ortaya çıkarın.</p>
-
-            <a href="https://www.paytr.com/link/5GMqvbD" target="_blank" rel="noopener noreferrer" class="btn-paytr">
-
-                💳 PAYTR ile İndirimli Satın Al
-
-            </a>
-
-        </div>
+        <section class="category-section">
+            <h2 class="category-title">Performans & ECU Tuning</h2>
+            <div class="product-grid">
+
+                <!-- Ürün 1: ECU Remap (Yeni Sayfaya Yönlendirir) -->
+                <article class="product-card">
+                    <a href="xmax-yazilim.html" target="_blank" class="image-container">
+                        <img src="xmaxyazilim.jpg" alt="XMAX ECU Yazılım ve Tuning" class="product-image">
+                        <div class="zoom-overlay">🔗 Detaylı İncelemek İçin Tıklayın</div>
+                    </a>
+                    <div class="product-info">
+                        <h3 class="product-title">
+                            <a href="xmax-yazilim.html" target="_blank">Özel ECU Kalibrasyonu & Remap (2017-2026)</a>
+                        </h3>
+                        <p class="product-description">2017-2026 arası tüm XMAX 125, 250 ve 300 modelleri için orijinal ECU üzerinde Dyno ortamında geliştirilmiş özel yazılım ve tuning hizmeti.</p>
+                        <ul class="product-features">
+                            <li>Orijinal ECU için Dyno özel yakıt ve ateşleme haritası</li>
+                            <li>AFR ayarı ve hassas enjeksiyon yönetimi</li>
+                            <li>Devir kesici (Rev Limiter) seviye düzenlemesi</li>
+                            <li>Hız ve tork limitör güncellemeleri</li>
+                            <li>Canlı veri analizi, Lambda takibi ve arıza geçmişi temizleme</li>
+                            <li>İsteğe bağlı 0-100 km/s hızlanma süresi ve dinanometre güç ölçümleri</li>
+                        </ul>
+                        
+                        <div class="action-links">
+                            <a href="xmax-yazilim.html" target="_blank" class="btn-link btn-detail">
+                                📋 Detaylı Teknik Tablo ve Detaylar
+                            </a>
+                            <a href="https://www.paytr.com/link/5GMqvbD" target="_blank" rel="noopener noreferrer" class="btn-link btn-paytr">
+                                💳 İndirimli Kredi Kartı ile Satın Al (PAYTR)
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Ürün 2: Fren Kaliper Adaptörü -->
+                <article class="product-card">
+                    <div class="image-container" onclick="openModal('xmaxcaliperadaptor.jpg')">
+                        <img src="xmaxcaliperadaptor.jpg" alt="300mm Fren Kaliper Montaj Aparatı" class="product-image">
+                        <div class="zoom-overlay">🔍 Büyütmek için tıklayın</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">300mm Fren Kaliperi Montaj Aparatı</h3>
+                        <p class="product-description">XMAX 250 ve 300 (2017-2026) kasalarla tam uyumlu, R25 / MT25 300mm disk dönüşüm braketi.</p>
+                        <ul class="product-features">
+                            <li>7075 Havacılık serisi billet alüminyumdan CNC işleme</li>
+                            <li>Sert anodik koruyucu kaplama</li>
+                            <li>Yüksek hızlarda esnemeyen monoblok yapı</li>
+                            <li>Orijinal noktalarla %100 cıvata uyumu (Plug & Play)</li>
+                        </ul>
+                        
+                        <div class="action-links">
+                            <a href="https://www.paytr.com/link/uGp3Sgp" target="_blank" rel="noopener noreferrer" class="btn-link btn-paytr">
+                                💳 İndirimli Kredi Kartı ile Satın Al (PAYTR)
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="category-section">
+            <h2 class="category-title">Özel Tasarım Aksesuarlar</h2>
+            <div class="product-grid">
+
+                <!-- Ürün 3: Frunk-Max -->
+                <article class="product-card">
+                    <div class="image-container" onclick="openModal('Frunk.jpg')">
+                        <img src="Frunk.jpg" alt="Frunk-Max Ön Torpido Saklama Alanı" class="product-image">
+                        <div class="zoom-overlay">🔍 Büyütmek için tıklayın</div>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Frunk-Max Ön Torpido Saklama Alanı</h3>
+                        <p class="product-description">Gidon kapağı yerine tam oturan, PETG malzemeden üretilmiş ekstra saklama gözü.</p>
+                        <ul class="product-features">
+                            <li>Isıya ve UV ışınlarına dayanıklı PETG malzeme</li>
+                            <li>Orijinal montaj noktalarına birebir uyum</li>
+                            <li>Pratik ve kolay montaj imkanı</li>
+                        </ul>
+                        
+                        <div class="action-links">
+                            <a href="https://www.paytr.com/link/Q9OVCwV" target="_blank" rel="noopener noreferrer" class="btn-link btn-paytr">
+                                💳 İndirimli Kredi Kartı ile Satın Al (PAYTR)
+                            </a>
+                            <div class="marketplace-row">
+                                <a href="https://www.trendyol.com/prodimar/yamaha-xmax-uyumlu-frunk-max-gidon-ici-saklama-bolmesi-2017-2026-tum-kasalarla-uyumlu-p-1140993784?merchantId=401705&filterOverPriceListings=false" target="_blank" rel="noopener noreferrer" class="btn-link btn-trendyol">
+                                    Trendyol'da Satın Al
+                                </a>
+                                <a href="https://www.n11.com/urun/yamaha-xmax-uyumlu-frunk-max-gidon-ici-saklama-bolmesi-2017-2026-tum-kasalarla-uyumlu-siyah-125969625?magaza=bosphorusinnovations" target="_blank" rel="noopener noreferrer" class="btn-link btn-n11">
+                                    n11'de Satın Al
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
 
     </div>
 
-
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImage" alt="Büyütülmüş Görsel">
+    </div>
 
     <footer>
+        <div class="contact-box">
+            <div class="contact-title">Müşteri Hizmetleri & İletişim</div>
+            
+            <a href="https://wa.me/908503075458" target="_blank" rel="noopener noreferrer" class="contact-link whatsapp">
+                <svg class="contact-icon" viewBox="0 0 24 24">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                </svg>
+                WhatsApp İletişim Hattı (+90 850 307 5458)
+            </a>
 
-        <p>&copy; 2026 xmaxmodifiye.com.tr - Tüm hakları saklıdır. Prodimar LTD ŞTİ.</p>
+            <a href="https://maps.google.com/maps?ll=41.032256,28.920015&z=17&t=m&hl=tr&gl=TR&mapclient=embed&cid=12095621459922215308" target="_blank" rel="noopener noreferrer" class="contact-link">
+                📍 Satış Adresi (Google Haritalar)
+            </a>
 
+            <a href="https://maps.app.goo.gl/QaksrKg1FVM9yrcQ9" target="_blank" rel="noopener noreferrer" class="contact-link">
+                🔧 Montaj Noktası: Exclusive Garage (Maslak)
+            </a>
+        </div>
+        <div class="copyright-section">
+            <p>&copy; 2026 xmaxmodifiye.com.tr - Tüm hakları saklıdır.</p>
+            <p>Bir Prodimar LTD ŞTİ markasıdır.</p>
+        </div>
     </footer>
 
+    <script>
+        function openModal(imgSrc) {
+            var modal = document.getElementById("imageModal");
+            var modalImg = document.getElementById("modalImage");
+            modal.style.display = "flex";
+            modalImg.src = imgSrc;
+        }
 
+        function closeModal() {
+            document.getElementById("imageModal").style.display = "none";
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        });
+    </script>
 
 </body>
-
 </html>

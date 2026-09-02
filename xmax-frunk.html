@@ -28,7 +28,6 @@
             line-height: 1.6;
         }
 
-        /* En Tepe Navigasyon */
         .top-nav {
             background-color: var(--card-bg);
             border-bottom: 1px solid var(--border-color);
@@ -82,7 +81,6 @@
             transform: translateY(-2px);
         }
 
-        /* Hero / Başlık Alanı */
         header {
             background: linear-gradient(180deg, var(--card-bg) 0%, var(--bg-color) 100%);
             padding: 3rem 1rem 1.5rem 1rem;
@@ -116,7 +114,7 @@
             margin-top: 0.8rem;
             color: var(--text-secondary);
             font-size: 1.1rem;
-            max-width: 650px;
+            max-width: 700px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -149,6 +147,98 @@
             margin-left: 10px;
         }
 
+        /* Özellikler Grid (Neden Frunk-Max?) */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .feature-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--accent-color);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(255, 107, 0, 0.15);
+        }
+
+        .feature-card h3 {
+            margin-top: 0;
+            color: #fff;
+            font-size: 1.15rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+            margin-bottom: 0;
+        }
+
+        /* Montaj Adımları */
+        .install-box {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+        }
+
+        .install-steps {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .install-steps li {
+            position: relative;
+            padding: 1rem 1rem 1rem 3.5rem;
+            margin-bottom: 0.8rem;
+            background-color: #1e293b;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+            font-weight: 500;
+        }
+
+        .install-steps li::before {
+            content: attr(data-step);
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 28px;
+            height: 28px;
+            background-color: var(--accent-color);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .package-contents {
+            background: rgba(255, 107, 0, 0.08);
+            border: 1px dashed rgba(255, 107, 0, 0.4);
+            border-radius: 10px;
+            padding: 1.2rem;
+            color: #fff;
+            font-size: 0.95rem;
+        }
+
+        .package-contents strong {
+            color: var(--accent-color);
+        }
+
         /* 1. YouTube Video Hero Kartı */
         .featured-video-card {
             background: var(--card-bg);
@@ -168,7 +258,7 @@
         .video-container {
             position: relative;
             width: 100%;
-            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            padding-top: 56.25%;
             background-color: #000;
         }
 
@@ -197,7 +287,7 @@
             font-size: 1.05rem;
         }
 
-        /* 2. Görseller Grid */
+        /* Görseller Grid */
         .media-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -211,7 +301,6 @@
             overflow: hidden;
             cursor: pointer;
             transition: all 0.3s ease;
-            position: relative;
         }
 
         .media-card:hover {
@@ -242,7 +331,7 @@
             border-top: 1px solid var(--border-color);
         }
 
-        /* 3. Dokümanlar Grid */
+        /* Dokümanlar Grid */
         .docs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -279,7 +368,7 @@
             font-weight: 700;
         }
 
-        /* 4. Satın Alma Kutusu */
+        /* Satın Alma Kutusu */
         .buy-box {
             background: linear-gradient(145deg, #151c2c, #0f172a);
             border: 2px solid var(--accent-color);
@@ -287,8 +376,6 @@
             padding: 2.5rem 1.5rem;
             text-align: center;
             box-shadow: 0 12px 32px rgba(255, 107, 0, 0.18);
-            position: relative;
-            overflow: hidden;
         }
 
         .buy-box h2 {
@@ -326,17 +413,9 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
 
-        .btn-paytr {
-            background-color: var(--paytr-color);
-        }
-
-        .btn-trendyol {
-            background-color: var(--trendyol-color);
-        }
-
-        .btn-n11 {
-            background-color: var(--n11-color);
-        }
+        .btn-paytr { background-color: var(--paytr-color); }
+        .btn-trendyol { background-color: var(--trendyol-color); }
+        .btn-n11 { background-color: var(--n11-color); }
 
         .btn-buy:hover {
             transform: translateY(-3px);
@@ -344,7 +423,7 @@
             filter: brightness(1.1);
         }
 
-        /* Modal / Resim Büyüteç */
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -378,9 +457,7 @@
             transition: color 0.2s;
         }
 
-        .close-modal:hover {
-            color: var(--accent-color);
-        }
+        .close-modal:hover { color: var(--accent-color); }
 
         /* Footer */
         footer {
@@ -456,9 +533,9 @@
 
     <!-- Header / Başlık -->
     <header>
-        <span class="badge-tag">Özel Tasarım Aksesuar</span>
+        <span class="badge-tag">Bosphorus Innovations Tasarımı</span>
         <h1>Frunk-Max Ön Torpido Saklama Alanı</h1>
-        <p>Yamaha XMAX 125 / 250 / 300 scooter modelleri için özel olarak üretilmiş, yüksek dayanımlı PETG gidon torpido çözümü.</p>
+        <p>Yamaha XMAX sürücülerinin en büyük sorunlarından biri olan "hızlı erişim" ihtiyacını karşılamak için özel olarak geliştirildi.</p>
     </header>
 
     <div class="container">
@@ -470,6 +547,29 @@
             </div>
             <div class="video-info-bar">
                 <span>🎥 Frunk-Max Detaylı İnceleme ve Tanıtım Videomuz</span>
+            </div>
+        </div>
+
+        <!-- Ürün Avantajları / Neden Frunk-Max? -->
+        <div class="section-header">
+            <h2 class="section-title">⚡ Neden Frunk-Max?</h2>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card">
+                <h3>🛡️ Kırılmaz Esnek Polimer</h3>
+                <p>Sarsıntı sönümleyici özel PETG yapısı sayesinde en bozuk yollarda bile çatlamaz, kırılmaz.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🧲 Mıknatıslı Hızlı Kapak</h3>
+                <p>Güçlü Neodyum mıknatıslar sayesinde eldivenle bile tek hamlede açılır, kendiliğinden güvenle kapanır.</p>
+            </div>
+            <div class="feature-card">
+                <h3>💧 Tam Sızdırmazlık</h3>
+                <p>Entegre O-ring contası ile yağmur ve yıkama sularına karşı %100 koruma sağlar.</p>
+            </div>
+            <div class="feature-card">
+                <h3>📦 Geniş Kullanım Alanı</h3>
+                <p>Sağ torpidoya sığmayan lanyard, site giriş kartları, anahtarlar ve bozuk paralar için 0.4 litrelik ideal hacim.</p>
             </div>
         </div>
 
@@ -556,6 +656,24 @@
                 <a href="N11_LINKI_BURAYA" target="_blank" class="btn-buy btn-n11">
                     🔴 N11 Mağazasından Satın Al
                 </a>
+            </div>
+        </div>
+
+        <!-- Kolay Kurulum (Tak-Çalıştır) Bölümü -->
+        <div class="section-header">
+            <h2 class="section-title">⚙️ Kolay Kurulum (Tak-Çalıştır)</h2>
+        </div>
+        <div class="install-box">
+            <p style="color: var(--text-secondary); margin-top: 0; margin-bottom: 1.5rem;">
+                Motorunuzda herhangi bir delme veya kesme işlemi yapmanıza gerek yoktur. Dayanıklı paslanmaz menteşe yapısıyla kolayca monte edilir:
+            </p>
+            <ul class="install-steps">
+                <li data-step="1">Orijinal kapağı sökün.</li>
+                <li data-step="2">Kutudan çıkan Yeni U-Klipsi alt yuvaya takın.</li>
+                <li data-step="3">Orijinal 2 sekman ve kapağın içinden geçen yeni M6 civata ile 4 noktadan sabitleyin.</li>
+            </ul>
+            <div class="package-contents">
+                <strong>📦 Paket İçeriği:</strong> 1x Frunk-Max Gövde, 1x Yeni U-Klips, 1x Yeni M6 Montaj Civatası.
             </div>
         </div>
 

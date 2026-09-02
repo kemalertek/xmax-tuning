@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yamaha XMAX ECU Remap & Yazılım Detayları | Bosphorus Innovations</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --accent-color: #ff6b00;
+            --text-color: #f0f6fc;
+            --text-secondary: #8b949e;
+            --border-color: #30363d;
+            --table-header: #21262d;
+            --paytr-color: #00b050;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            color: var(--accent-color);
+            font-size: 2rem;
+        }
+
+        header p {
+            margin-top: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        .back-btn {
+            display: inline-block;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s;
+        }
+
+        .back-btn:hover {
+            transform: translateX(-3px);
+        }
+
+        .section-title {
+            color: var(--accent-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-top: 2.5rem;
+            font-size: 1.4rem;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin-top: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--table-header);
+            color: #fff;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .badge-success { background-color: rgba(37, 211, 102, 0.15); color: #25d366; }
+        .badge-warning { background-color: rgba(255, 107, 0, 0.15); color: #ff6b00; }
+
+        .cta-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 1.8rem;
+            border-radius: 8px;
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .btn-paytr {
+            display: inline-block;
+            background-color: var(--paytr-color);
+            color: #fff;
+            text-decoration: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 6px;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: opacity 0.2s;
+        }
+
+        .btn-paytr:hover {
+            opacity: 0.9;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Yamaha XMAX ECU Remap & Yazılım Detayları</h1>
+        <p>Gelişmiş Teşhis, Canlı Veri Analizi ve Performans Kalibrasyonu</p>
+    </header>
+
+    <div class="container">
+        <a href="index.html" class="back-btn">← Ana Sayfaya Dön</a>
+
+        <!-- 1. Desteklenen XMAX Modelleri -->
+        <h2 class="section-title">1. Desteklenen XMAX Modelleri ve Protokol Listesi</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Motor</th>
+                        <th>Yıl</th>
+                        <th>Parça / ECM Kodu</th>
+                        <th>Bağlantı Protokolü</th>
+                        <th>Durum</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>XMAX 300 - YConnect</td>
+                        <td>300cc</td>
+                        <td>2026</td>
+                        <td>BBS4 / BBS-H591A-40</td>
+                        <td>YMC1 CANBUS</td>
+                        <td><span class="badge badge-success">Aktif / Destekleniyor</span></td>
+                    </tr>
+                    <tr>
+                        <td>XMAX 300 - CANBUS</td>
+                        <td>300cc</td>
+                        <td>2024 - 2025</td>
+                        <td>BMK1 / BMK-H591A-10</td>
+                        <td>YMC1 CANBUS</td>
+                        <td><span class="badge badge-success">Aktif / Destekleniyor</span></td>
+                    </tr>
+                    <tr>
+                        <td>XMAX 300 - CANBUS</td>
+                        <td>300cc</td>
+                        <td>2021 - 2023</td>
+                        <td>BBA0 / BBA-H591A-00</td>
+                        <td>YMC1 CANBUS</td>
+                        <td><span class="badge badge-success">Aktif / Destekleniyor</span></td>
+                    </tr>
+                    <tr>
+                        <td>XMAX 300 - CANBUS</td>
+                        <td>300cc</td>
+                        <td>2022 - 2024</td>
+                        <td>B5X0 / B5X1 / B1V1</td>
+                        <td>YMC1 CANBUS / Remap</td>
+                        <td><span class="badge badge-success">Aktif / Destekleniyor</span></td>
+                    </tr>
+                    <tr>
+                        <td>XMAX 300 (Standart)</td>
+                        <td>300cc</td>
+                        <td>2017 - 2019</td>
+                        <td>B740 / B741</td>
+                        <td>K-Line</td>
+                        <td><span class="badge badge-success">Aktif / Destekleniyor</span></td>
+                    </tr>
+                    <tr>
+                        <td>XMAX 125 - SMARTKEY</td>
+                        <td>125cc</td>
+                        <td>2021</td>
+                        <td>B9Y1 / B9Y-H594A-00</td>
+                        <td>DENSO CANBUS</td>
+                        <td><span class="badge badge-success">Aktif / Destekleniyor</span></td>
+                    </tr>
+                    <tr>
+                        <td>XMAX 125 TECH</td>
+                        <td>125cc</td>
+                        <td>2024</td>
+                        <td>BMJ-H594A-10</td>
+                        <td>DENSO CANBUS</td>
+                        <td><span class="badge badge-success">Aktif / Destekleniyor</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 2. Müdahale Edilebilir Haritalama ve Parametreler -->
+        <h2 class="section-title">2. ECU Müdahale ve Düzenleme Yetenekleri</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Parametre / Bileşen</th>
+                        <th>Kategori</th>
+                        <th>Okuma (Read)</th>
+                        <th>Yazma / Düzenleme (Write)</th>
+                        <th>Açıklama</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Ateşleme Avansı (Ignition Advance)</td>
+                        <td>Haritalama / Remap</td>
+                        <td>Evet</td>
+                        <td><span class="badge badge-warning">Evet (Düzenlenebilir)</span></td>
+                        <td>Ateşleme avans haritası derece cinsinden düzenlenir.</td>
+                    </tr>
+                    <tr>
+                        <td>Manuel Y-Eksen Avans Ayarı</td>
+                        <td>Haritalama / Remap</td>
+                        <td>Evet</td>
+                        <td><span class="badge badge-warning">Evet (Manuel Müdahale)</span></td>
+                        <td>Devir/indeks noktalarında özel avans ayarı.</td>
+                    </tr>
+                    <tr>
+                        <td>Avans Güvenlik Limitleri</td>
+                        <td>Güvenlik / Limit</td>
+                        <td>Evet</td>
+                        <td><span class="badge badge-warning">5.0° - 40.0°</span></td>
+                        <td>Güvenlik limitleri dahilinde avans müdahalesi.</td>
+                    </tr>
+                    <tr>
+                        <td>ECM / ECU Sıfırlama (Reset)</td>
+                        <td>Servis İşlevi</td>
+                        <td>-</td>
+                        <td><span class="badge badge-success">Evet (Komut)</span></td>
+                        <td>ECU adaptasyon değerleri sıfırlanır.</td>
+                    </tr>
+                    <tr>
+                        <td>Geçmiş Arıza Kodları (DTC)</td>
+                        <td>Diyagnoz</td>
+                        <td>Evet</td>
+                        <td><span class="badge badge-success">Evet (Temizleme)</span></td>
+                        <td>Hafızadaki geçmiş arızalar okunur ve silinir.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 3. Anlık Canlı Veri Takibi (Live Data) -->
+        <h2 class="section-title">3. Canlı Veri ve Sensör Analiz Kapasitesi</h2>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Sensör / Parametre</th>
+                        <th>Birim</th>
+                        <th>Açıklama</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Engine Speed (Motor Devri)</td>
+                        <td>RPM</td>
+                        <td>Motor anlık devir sayısı takibi.</td>
+                    </tr>
+                    <tr>
+                        <td>TP Sensor (Gaz Kelebeği)</td>
+                        <td>Derece (°) / Millivolt (mV)</td>
+                        <td>Gaz kelebeği açısı ve sensör çıkış voltajı.</td>
+                    </tr>
+                    <tr>
+                        <td>Injector Time (Enjektör Süresi)</td>
+                        <td>Milisaniye (ms)</td>
+                        <td>Enjektör püskürtme süresi takibi.</td>
+                    </tr>
+                    <tr>
+                        <td>Fuel Trim (Short-term FT)</td>
+                        <td>Yüzde (%) & Skala</td>
+                        <td>Kısa vadeli yakıt düzeltme ve karışım dengesi.</td>
+                    </tr>
+                    <tr>
+                        <td>Oxygen Sensor (Lambda)</td>
+                        <td>Millivolt (mV)</td>
+                        <td>Egzoz gazı oksijen oranı ve zengin/fakir karışım skalası.</td>
+                    </tr>
+                    <tr>
+                        <td>MAP Sensor (Manifold Basıncı)</td>
+                        <td>Kilopascal (Kpa)</td>
+                        <td>Manifold mutlak basınç/vakum değeri.</td>
+                    </tr>
+                    <tr>
+                        <td>IAT & Engine Temperature</td>
+                        <td>Derece Celsius (°C)</td>
+                        <td>Emiş havası ve motor soğutma sıvısı sıcaklığı.</td>
+                    </tr>
+                    <tr>
+                        <td>Battery Voltage (Akü Voltajı)</td>
+                        <td>Volt (V)</td>
+                        <td>Sistem çalışma voltajı ve şarj seviyesi.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="cta-card">
+            <h3>XMAX Yazılım & ECU Tuning Hizmetini Şimdi Satın Alın</h3>
+            <p>Dyno üzerinde geliştirilmiş özel yazılımımızla XMAX'inizin gerçek gücünü ortaya çıkarın.</p>
+            <a href="https://www.paytr.com/link/5GMqvbD" target="_blank" rel="noopener noreferrer" class="btn-paytr">
+                💳 PAYTR ile İndirimli Satın Al
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 xmaxmodifiye.com.tr - Tüm hakları saklıdır. Prodimar LTD ŞTİ.</p>
+    </footer>
+
+</body>
+</html>

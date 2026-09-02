@@ -62,6 +62,23 @@
             transform: translateX(-3px);
         }
 
+        /* Yeni Eklenen Görsel Stili */
+        .page-banner-container {
+            width: 100%;
+            margin-bottom: 2.5rem;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            background-color: var(--table-header); /* Yüklenirken boşluk görünmemesi için */
+        }
+
+        .page-banner-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover; /* Gerekirse kırpma yapar */
+        }
+
         .section-title {
             color: var(--accent-color);
             border-bottom: 1px solid var(--border-color);
@@ -154,6 +171,12 @@
 
     <div class="container">
         <a href="index.html" class="back-btn">← Ana Sayfaya Dön</a>
+
+        <!-- YENİ EKLENEN İNFOGRAFİK GÖRSEL -->
+        <div class="page-banner-container">
+            <img src="image_36.png" alt="Yamaha XMAX ECU Remap Teknik İnfografik" class="page-banner-img">
+        </div>
+        <!-- GÖRSEL SONU -->
 
         <!-- 1. Desteklenen XMAX Modelleri -->
         <h2 class="section-title">1. Desteklenen XMAX Modelleri ve Protokol Listesi</h2>

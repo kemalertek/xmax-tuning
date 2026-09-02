@@ -12,7 +12,12 @@
             --text-color: #f0f6fc;
             --text-secondary: #8b949e;
             --border-color: #30363d;
+            --table-header: #21262d;
             --paytr-color: #00b050;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -45,21 +50,23 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 2rem 1rem;
         }
 
+        /* ÜRÜN ÖZET KARTLARI (ÜST KISIM) */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
         }
 
         .card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
             display: flex;
             flex-direction: column;
@@ -74,7 +81,7 @@
         .card-img-wrapper {
             position: relative;
             width: 100%;
-            height: 240px;
+            height: 220px;
             overflow: hidden;
             background-color: #000;
             cursor: pointer;
@@ -95,7 +102,7 @@
             position: absolute;
             bottom: 8px;
             right: 8px;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.75);
             color: #fff;
             font-size: 0.75rem;
             padding: 4px 8px;
@@ -104,7 +111,7 @@
         }
 
         .card-content {
-            padding: 1.5rem;
+            padding: 1.25rem;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
@@ -112,30 +119,30 @@
 
         .card-title {
             margin: 0 0 0.5rem 0;
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             color: #fff;
         }
 
         .card-desc {
             color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
+            font-size: 0.88rem;
+            margin-bottom: 1.2rem;
             flex-grow: 1;
         }
 
         .card-actions {
             display: flex;
-            gap: 0.8rem;
+            gap: 0.6rem;
         }
 
         .btn {
             flex: 1;
             text-align: center;
-            padding: 0.75rem;
+            padding: 0.65rem;
             border-radius: 6px;
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: opacity 0.2s;
         }
 
@@ -158,7 +165,90 @@
             opacity: 0.9;
         }
 
-        /* LIGHTBOX / MODAL */
+        /* DETAY BÖLÜMLERİ VE TABLOLAR */
+        .detail-block {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            scroll-margin-top: 2rem;
+        }
+
+        .section-title {
+            color: var(--accent-color);
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+
+        .banner-img-container {
+            width: 100%;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+        }
+
+        .banner-img-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            padding: 0.85rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        th {
+            background-color: var(--table-header);
+            color: #fff;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.78rem;
+            font-weight: 600;
+        }
+
+        .badge-success { background-color: rgba(37, 211, 102, 0.15); color: #25d366; }
+        .badge-warning { background-color: rgba(255, 107, 0, 0.15); color: #ff6b00; }
+
+        .cta-card {
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px dashed var(--border-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        /* MODAL / LIGHTBOX (GÖRSEL BÜYÜTME) */
         .modal {
             display: none;
             position: fixed;
@@ -173,10 +263,10 @@
         }
 
         .modal-content {
-            max-width: 90%;
-            max-height: 85vh;
+            max-width: 92%;
+            max-height: 88vh;
             border-radius: 8px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.8);
+            box-shadow: 0 0 25px rgba(0,0,0,0.8);
         }
 
         .modal-close {
@@ -207,57 +297,233 @@
     </header>
 
     <div class="container">
-        <div class="grid">
 
-            <!-- ÜRÜN 1: ECU REMAP -->
+        <!-- HIZLI ERİŞİM KARTLARI -->
+        <div class="grid">
             <div class="card">
                 <div class="card-img-wrapper" onclick="openModal('image_36.png')">
                     <img src="image_36.png" alt="Yamaha XMAX ECU Remap">
                     <span class="img-hint">🔍 Büyüt</span>
                 </div>
                 <div class="card-content">
-                    <h2 class="card-title">Yamaha XMAX ECU Remap & Tuning</h2>
-                    <p class="card-desc">2017-2026 tüm XMAX modelleri için özel yakıt/avans haritalaması, hız & devir limitör düzenlemesi.</p>
+                    <h3 class="card-title">Yamaha XMAX ECU Remap</h3>
+                    <p class="card-desc">2017-2026 tüm XMAX modelleri için özel yazılım, AFR kalibrasyonu ve limitör kaldırma.</p>
                     <div class="card-actions">
-                        <a href="xmax-yazilim.html" class="btn btn-outline">Detaylı İncele</a>
+                        <a href="#ecu-detay" class="btn btn-outline">Detaylara İncele</a>
                         <a href="https://www.paytr.com/link/5GMqvbD" target="_blank" class="btn btn-paytr">Satın Al</a>
                     </div>
                 </div>
             </div>
 
-            <!-- ÜRÜN 2: FREN BRAKETİ -->
             <div class="card">
                 <div class="card-img-wrapper" onclick="openModal('WhatsApp Image 2026-09-01 at 20.32.46.jpeg')">
                     <img src="WhatsApp Image 2026-09-01 at 20.32.46.jpeg" alt="300mm Fren Kaliperi Aparatı">
                     <span class="img-hint">🔍 Büyüt</span>
                 </div>
                 <div class="card-content">
-                    <h2 class="card-title">300mm Fren Kaliperi Montaj Aparatı</h2>
-                    <p class="card-desc">7075-T6 Havacılık Sınıfı Alüminyumdan CNC ile işlenmiş, XMAX ön fren performansını artıran braket.</p>
+                    <h3 class="card-title">300mm Fren Braketi</h3>
+                    <p class="card-desc">7075-T6 Alüminyum CNC imalat, yüksek frenleme gücü için özel tasarım braket.</p>
                     <div class="card-actions">
-                        <a href="fren-braketi.html" class="btn btn-outline">Detaylı İncele</a>
+                        <a href="#fren-detay" class="btn btn-outline">Detaylara İncele</a>
                         <a href="https://www.paytr.com/link/5GMqvbD" target="_blank" class="btn btn-paytr">Satın Al</a>
                     </div>
                 </div>
             </div>
 
-            <!-- ÜRÜN 3: FRUNK-MAX -->
             <div class="card">
                 <div class="card-img-wrapper" onclick="openModal('frunk-max-thumb.jpg')">
-                    <img src="frunk-max-thumb.jpg" alt="Frunk-Max Ön Torpido Saklama Alanı">
+                    <img src="frunk-max-thumb.jpg" alt="Frunk-Max Torpido">
                     <span class="img-hint">🔍 Büyüt</span>
                 </div>
                 <div class="card-content">
-                    <h2 class="card-title">Frunk-Max Ön Torpido Saklama Alanı</h2>
-                    <p class="card-desc">Gidon kapağı yerine geçen, PETG malzemeden 3D üretilmiş ekstra ön bagaj & torpido aksesuarı.</p>
+                    <h3 class="card-title">Frunk-Max Saklama Alanı</h3>
+                    <p class="card-desc">PETG malzemeden 3D üretilmiş, gidon kapağı yerine geçen pratik ön bagaj çözümü.</p>
                     <div class="card-actions">
-                        <a href="frunk-max.html" class="btn btn-outline">Detaylı İncele</a>
+                        <a href="#frunk-detay" class="btn btn-outline">Detaylara İncele</a>
                         <a href="https://www.paytr.com/link/5GMqvbD" target="_blank" class="btn btn-paytr">Satın Al</a>
                     </div>
                 </div>
             </div>
-
         </div>
+
+        <!-- 1. ÜRÜN DETAYI: ECU REMAP & YAZILIM -->
+        <div id="ecu-detay" class="detail-block">
+            <h2 class="section-title">1. Yamaha XMAX ECU Remap & Tuning Detayları</h2>
+            
+            <div class="banner-img-container" onclick="openModal('image_36.png')">
+                <img src="image_36.png" alt="Yamaha XMAX ECU Remap Teknik İnfografik">
+            </div>
+
+            <h3>Desteklenen Model ve Protokol Listesi</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Model</th>
+                            <th>Motor</th>
+                            <th>Yıl</th>
+                            <th>Parça / ECM Kodu</th>
+                            <th>Bağlantı Protokolü</th>
+                            <th>Durum</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>XMAX 300 - YConnect</td>
+                            <td>300cc</td>
+                            <td>2026</td>
+                            <td>BBS4 / BBS-H591A-40</td>
+                            <td>YMC1 CANBUS</td>
+                            <td><span class="badge badge-success">Aktif / Destekleniyor</span></td>
+                        </tr>
+                        <tr>
+                            <td>XMAX 300 - CANBUS</td>
+                            <td>300cc</td>
+                            <td>2024 - 2025</td>
+                            <td>BMK1 / BMK-H591A-10</td>
+                            <td>YMC1 CANBUS</td>
+                            <td><span class="badge badge-success">Aktif / Destekleniyor</span></td>
+                        </tr>
+                        <tr>
+                            <td>XMAX 300 (Standart)</td>
+                            <td>300cc</td>
+                            <td>2017 - 2019</td>
+                            <td>B740 / B741</td>
+                            <td>K-Line</td>
+                            <td><span class="badge badge-success">Aktif / Destekleniyor</span></td>
+                        </tr>
+                        <tr>
+                            <td>XMAX 125 TECH</td>
+                            <td>125cc</td>
+                            <td>2024</td>
+                            <td>BMJ-H594A-10</td>
+                            <td>DENSO CANBUS</td>
+                            <td><span class="badge badge-success">Aktif / Destekleniyor</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Müdahale Edilebilir Parametreler & Canlı Veri</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parametre</th>
+                            <th>İşlem Tipi</th>
+                            <th>Açıklama</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ateşleme Avansı (Ignition)</td>
+                            <td><span class="badge badge-warning">Düzenlenebilir</span></td>
+                            <td>Devir/indeks noktalarında özel avans haritası ayarlanır.</td>
+                        </tr>
+                        <tr>
+                            <td>Hız & Devir Limitörleri</td>
+                            <td><span class="badge badge-warning">Düzenlenebilir</span></td>
+                            <td>Fabrika limitörleri güvenli seviyeye çekilir veya kaldırılır.</td>
+                        </tr>
+                        <tr>
+                            <td>Canlı Veri Takibi (Live Data)</td>
+                            <td><span class="badge badge-success">Canlı İzleme</span></td>
+                            <td>RPM, O2 Oksijen/Lambda, MAP Basınç, İnektör Süresi, TPS ve Voltaj.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="cta-card">
+                <a href="https://www.paytr.com/link/5GMqvbD" target="_blank" class="btn btn-paytr" style="padding: 0.8rem 2rem;">
+                    💳 ECU Yazılımlarını PAYTR ile İndirimli Satın Al
+                </a>
+            </div>
+        </div>
+
+        <!-- 2. ÜRÜN DETAYI: FREN BRAKETİ -->
+        <div id="fren-detay" class="detail-block">
+            <h2 class="section-title">2. 300mm Fren Kaliperi Montaj Aparatı</h2>
+            
+            <div class="banner-img-container" onclick="openModal('watermarked_img_7507433533128966265.jpg')">
+                <img src="watermarked_img_7507433533128966265.jpg" alt="Üretim Aşamaları ve Montaj">
+            </div>
+
+            <h3>Teknik Özellikler ve İmalat Süreci</h3>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Aşama / Özellik</th>
+                            <th>Açıklama</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Malzeme Kalitesi</td>
+                            <td>7075-T6 Havacılık Sınıfı Yüksek Mukavemetli Alüminyum Billet</td>
+                        </tr>
+                        <tr>
+                            <td>Tasarım & Mühendislik</td>
+                            <td>3D CAD Modelleme ve Gerilim Analizleri (Bosphorus Innovations)</td>
+                        </tr>
+                        <tr>
+                            <td>İmalat Teknolojisi</td>
+                            <td>Hassas CNC Frezeleme ve Yüzey Gravür İşlemleri</td>
+                        </tr>
+                        <tr>
+                            <td>Uyumlu Diskle Kalip</td>
+                            <td>300mm Oversize Fren Diskleri / Orijinal veya Performans Kaliperleri</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="cta-card">
+                <a href="https://www.paytr.com/link/5GMqvbD" target="_blank" class="btn btn-paytr" style="padding: 0.8rem 2rem;">
+                    💳 300mm Fren Braketini PAYTR ile Satın Al
+                </a>
+            </div>
+        </div>
+
+        <!-- 3. ÜRÜN DETAYI: FRUNK-MAX -->
+        <div id="frunk-detay" class="detail-block">
+            <h2 class="section-title">3. Frunk-Max Ön Torpido Saklama Alanı</h2>
+            
+            <p>Frunk-Max, Yamaha XMAX scooter’larda direksiyon altındaki boş gidon kapağı alanını değerlendirerek ekstra güvenli bir torpido saklama gözüne dönüştüren özel tasarım bir aksesuardır.</p>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Özellik</th>
+                            <th>Detay</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Malzeme</td>
+                            <td>Isıya ve Dış Etkenlere Dayanıklı PETG Plastik</td>
+                        </tr>
+                        <tr>
+                            <td>Uyumlu Modeller</td>
+                            <td>Yamaha XMAX 250 / 300 (2018 - 2026)</td>
+                        </tr>
+                        <tr>
+                            <td>Montaj Tipi</td>
+                            <td>Orijinal vida yerlerine sıfıra sıfır uyum, delme/biçme gerektirmez.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="cta-card">
+                <a href="https://www.paytr.com/link/5GMqvbD" target="_blank" class="btn btn-paytr" style="padding: 0.8rem 2rem;">
+                    💳 Frunk-Max Saklama Alanını PAYTR ile Satın Al
+                </a>
+            </div>
+        </div>
+
     </div>
 
     <!-- MODAL / LIGHTBOX HTML -->

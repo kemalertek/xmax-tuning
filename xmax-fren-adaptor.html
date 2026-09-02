@@ -72,7 +72,6 @@
             }
         }
 
-        /* Görsel Galerisi */
         .gallery-container {
             display: flex;
             flex-direction: column;
@@ -117,7 +116,6 @@
             opacity: 1;
         }
 
-        /* Ürün İçerik Alanı */
         .product-info-panel {
             display: flex;
             flex-direction: column;
@@ -166,7 +164,6 @@
             flex-shrink: 0;
         }
 
-        /* Teknik Tablo */
         .tech-table {
             width: 100%;
             border-collapse: collapse;
@@ -202,7 +199,6 @@
             font-weight: 500;
         }
 
-        /* Ödeme Kutusu */
         .checkout-box {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -235,7 +231,6 @@
             transform: translateY(-2px);
         }
 
-        /* Modal / Büyüteç */
         .modal {
             display: none;
             position: fixed;
@@ -274,14 +269,37 @@
             margin-top: 4rem;
         }
 
+        .contact-box {
+            margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
         .contact-link {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 8px;
-            color: var(--whatsapp-color);
+            color: var(--accent-color);
+            background-color: #21262d;
+            padding: 0.7rem 1.5rem;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
+            transition: background-color 0.2s, transform 0.2s;
+        }
+
+        .contact-link:hover {
+            background-color: #30363d;
+            transform: translateY(-2px);
+        }
+
+        .contact-link.whatsapp {
+            color: var(--whatsapp-color);
         }
 
         .copyright-section {
@@ -301,7 +319,6 @@
     <div class="container">
         <div class="product-detail-layout">
 
-            <!-- Sol Kolon: Ürün Görselleri -->
             <div class="gallery-container">
                 <div class="image-card" onclick="openModal('xmaxcaliperadaptor dikey.jpg')">
                     <img src="xmaxcaliperadaptor dikey.jpg" alt="300mm Fren Kaliperi Montaj Aparatı Dikey Görünüm" class="product-image">
@@ -313,7 +330,6 @@
                 </div>
             </div>
 
-            <!-- Sağ Kolon: Detaylar, Tablo ve Ödeme -->
             <div class="product-info-panel">
                 <h2 class="product-title">300mm Fren Kaliperi Montaj Aparatı</h2>
                 <p class="product-lead">
@@ -361,7 +377,6 @@
                     </tr>
                 </table>
 
-                <!-- Ödeme Linki Kutusu -->
                 <div class="checkout-box">
                     <a href="https://www.paytr.com/link/uGp3Sgp" target="_blank" rel="noopener noreferrer" class="btn-paytr">
                         💳 İndirimli Kredi Kartı ile Satın Al (PAYTR)
@@ -379,9 +394,17 @@
     </div>
 
     <footer>
-        <a href="https://wa.me/908503075458" target="_blank" rel="noopener noreferrer" class="contact-link">
-            💬 WhatsApp İletişim Hattı (+90 850 307 5458)
-        </a>
+        <div class="contact-box">
+            <a href="https://wa.me/908503075458" target="_blank" rel="noopener noreferrer" class="contact-link whatsapp">
+                💬 WhatsApp İletişim Hattı (+90 850 307 5458)
+            </a>
+            <a href="https://maps.google.com/maps?ll=41.032256,28.920015&z=17&t=m&hl=tr&gl=TR&mapclient=embed&cid=12095621459922215308" target="_blank" rel="noopener noreferrer" class="contact-link">
+                📍 Satış Adresi: Bosphorus Innovations (Bayrampaşa)
+            </a>
+            <a href="https://maps.app.goo.gl/QaksrKg1FVM9yrcQ9" target="_blank" rel="noopener noreferrer" class="contact-link">
+                🔧 Montaj Noktası: Exclusive Garage (Maslak)
+            </a>
+        </div>
         <div class="copyright-section">
             <p>&copy; 2026 xmaxmodifiye.com.tr - Tüm hakları saklıdır. Bir Prodimar LTD ŞTİ markasıdır.</p>
         </div>

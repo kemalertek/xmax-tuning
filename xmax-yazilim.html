@@ -80,7 +80,7 @@
 
         header {
             background: linear-gradient(180deg, var(--card-bg) 0%, var(--bg-color) 100%);
-            padding: 3rem 1rem 1.5rem 1rem;
+            padding: 3.5rem 1rem 2rem 1rem;
             text-align: center;
             border-bottom: 1px solid var(--border-color);
         }
@@ -111,7 +111,7 @@
             margin-top: 0.8rem;
             color: var(--text-secondary);
             font-size: 1.1rem;
-            max-width: 700px;
+            max-width: 750px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -184,7 +184,7 @@
             margin: 0;
         }
 
-        /* Detaylı Bilgi Tablosu veya Listesi */
+        /* Detaylı Bilgi Listesi */
         .info-box {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
@@ -201,7 +201,7 @@
 
         .info-list li {
             position: relative;
-            padding: 1rem 1rem 1rem 3rem;
+            padding: 1rem 1rem 1rem 3.5rem;
             margin-bottom: 1rem;
             background-color: #1e293b;
             border-radius: 10px;
@@ -210,12 +210,53 @@
         }
 
         .info-list li::before {
-            content: "🚀";
+            content: "⚙️";
             position: absolute;
-            left: 1rem;
+            left: 1.2rem;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+        }
+
+        /* Süreç Kutusu */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .process-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .process-num {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #fff;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .process-card h4 {
+            margin: 0 0 0.5rem 0;
+            color: #fff;
+            font-size: 1.05rem;
+        }
+
+        .process-card p {
+            margin: 0;
+            color: var(--text-secondary);
+            font-size: 0.88rem;
         }
 
         /* Footer / İletişim */
@@ -294,53 +335,75 @@
     <header>
         <span class="badge-tag">Bosphorus Innovations Mühendisliği</span>
         <h1>Motosiklet ECU Remap & Performans Yazılımı</h1>
-        <p>Motorunuzun potansiyelini serbest bırakın; güç, tork ve gaz tepkisi optimizasyonu ile üstün sürüş deneyimi yaşayın.</p>
+        <p>Fabrikasyon kısıtlamalarını kaldırın; güç, tork, gaz tepkisi ve hız limit optimizasyonlarıyla motorunuzun gerçek potansiyelini ortaya çıkarın.</p>
     </header>
 
     <div class="container">
 
-        <!-- Güç ve Tork Artışı Görsel Kartları -->
+        <!-- Güç ve Performans Kazanımları -->
         <div class="section-header">
-            <h2 class="section-title">⚡ ECU Remap ile Neler Değişir?</h2>
+            <h2 class="section-title">🚀 ECU Remap ile Elde Edilen Performans Artışı</h2>
         </div>
         <div class="perf-grid">
             <div class="perf-card">
                 <div class="perf-icon">🐎</div>
                 <h3>Güç (HP) Artışı</h3>
-                <p>Orijinal motor limitleri optimize edilerek üst devirlerde belirgin beygir gücü kazanımı sağlanır.</p>
+                <p>Orijinal motor limitleri optimize edilerek üst devirlerde belirgin beygir gücü ve üst hız potansiyeli kazanımı sağlanır.</p>
             </div>
             <div class="perf-card">
                 <div class="perf-icon">⚙️</div>
                 <h3>Tork Optimizasyonu</h3>
-                <p>Alt ve orta devirlerdeki çekiş düşüklükleri giderilir, ara hızlanmalarda çok daha esnek bir sürüş elde edilir.</p>
+                <p>Alt ve orta devirlerdeki ölü noktalar giderilir; ara hızlanmalarda çok daha güçlü ve esnek bir çekiş gücü elde edilir.</p>
             </div>
             <div class="perf-card">
-                <div class="perf-icon">🏎️</div>
-                <h3>Hız ve Devir Limiti (Rev-Limiter)</h3>
-                <p>Fabrikasyon hız kesiciler ve tork limitörleri sürüş güvenliği ve pist dinamiklerine göre yeniden kalibre edilir.</p>
-            </div>
-            <div class="perf-card">
-                <div class="perf-icon">🎯</div>
+                <div class="perf-icon">⏱️</div>
                 <h3>Anlık Gaz Tepkisi</h3>
-                <p>Gaz kolu gecikmeleri (throttle lag) sıfırlanarak komutlarınıza saniyesinde yanıt veren bir motor karakteri oluşur.</p>
+                <p>Gaz kolu gecikmeleri (throttle lag) sıfırlanarak el bileğinizin hareketine saniyesinde tepki veren kararlı bir motor karakteri oluşur.</p>
+            </div>
+            <div class="perf-card">
+                <div class="perf-icon">🏁</div>
+                <h3>Devir & Hız Limiti Ayarı</h3>
+                <p>Fabrikasyon hız kesiciler ve tork limitörleri, motorun mekanik güvenliği gözetilerek yeniden kalibre edilir.</p>
             </div>
         </div>
 
-        <!-- Detaylı Teknik Bilgiler -->
+        <!-- Teknik Detaylar -->
         <div class="section-header">
-            <h2 class="section-title">🔍 Teknik Detaylar ve Süreç</h2>
+            <h2 class="section-title">🔬 Derinlemesine Mühendislik Detayları</h2>
         </div>
         <div class="info-box">
             <ul class="info-list">
-                <li><strong>Hava-Yakıt Oranı (AFR) İyileştirmesi:</strong> Egzoz ve hava filtresi (örn. K&N) değişimlerine uygun olarak haritalandırma yapılarak motorun sağlıklı çalışması sağlanır.</li>
-                <li><strong>Sıcaklık ve Ateşleme Avansı:</strong> Avans tablosu güncellemeleri sayesinde yakıt verimliliği düşürülmeden maksimum patlama basıncı ve performans elde edilir.</li>
-                <li><strong>Güvenli Sınırlar:</strong> Tüm kalibrasyonlar motorun mekanik ömrü ve dayanıklılığı göz önünde bulundurularak dinamometre verileri ışığında özel olarak hazırlanır.</li>
+                <li><strong>Hava-Yakıt Oranı (AFR) Optimizasyonu:</strong> Performans hava filtreleri (örn. K&N) ve egzoz modifikasyonlarına tam uyumlu olacak şekilde yakıt haritaları yeniden ölçeklendirilir.</li>
+                <li><strong>Ateşleme Avansı Kalibrasyonu:</strong> Yakıt kalitesi ve termal sınırlar göz önünde bulundurularak avans tabloları optimize edilir, verimlilik artırılır.</li>
+                <li><strong>Gaz Kelebeği (DBW) Haritalandırması:</strong> Özellikle modern scooter ve motosikletlerdeki elektronik gaz kelebeği açılma oranları sürücü odaklı iyileştirilir.</li>
             </ul>
+        </div>
+
+        <!-- Uygulama Süreci -->
+        <div class="section-header">
+            <h2 class="section-title">📋 Yazılım ve Kalibrasyon Süreci</h2>
+        </div>
+        <div class="process-grid">
+            <div class="process-card">
+                <span class="process-num">1</span>
+                <h4>Orijinal Harita Okuma</h4>
+                <p>Mevcut ECU yazılımı özel protokoller ile okunarak yedeklenir ve analiz edilir.</p>
+            </div>
+            <div class="process-card">
+                <span class="process-num">2</span>
+                <h4>Özel Kalibrasyon</h4>
+                <p>Motor konfigürasyonunuza (egzoz, varyatör, filtre vb.) uygun olarak haritalar yeniden düzenlenir.</p>
+            </div>
+            <div class="process-card">
+                <span class="process-num">3</span>
+                <h4>Yükleme ve Test</h4>
+                <p>Yeni yazılım güvenli bir şekilde ECU'ya yazılır ve performans testleri gerçekleştirilir.</p>
+            </div>
         </div>
 
     </div>
 
-    <!-- Footer / WhatsApp & İletişim Butonları -->
+    <!-- Footer / WhatsApp & İletişim -->
     <footer>
         <div class="contact-box">
             <a href="https://wa.me/908503075458" target="_blank" rel="noopener noreferrer" class="contact-link whatsapp">

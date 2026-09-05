@@ -3,68 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atmosferik Motosiklet Su Enjeksiyon Performans Kiti | Bosphorus Innovations</title>
+    <title>Atmosferik | Bosphorus Innovations</title>
     <style>
         :root {
-            --bg-color: #0d1117;
-            --card-bg: #161b22;
+            --bg-color: #0b0f19;
+            --card-bg: #151c2c;
             --accent-color: #ff6b00;
+            --accent-hover: #e05e00;
             --text-color: #f0f6fc;
-            --text-secondary: #8b949e;
-            --border-color: #30363d;
+            --text-secondary: #94a3b8;
+            --border-color: #1e293b;
             --whatsapp-color: #25d366;
+            --paytr-color: #00a859;
         }
-        body { font-family: sans-serif; background-color: var(--bg-color); color: var(--text-color); margin: 0; padding: 0; line-height: 1.6; }
-        .container { max-width: 900px; margin: 3rem auto; padding: 2rem; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 10px; box-shadow: 0 4px 20px rgba(0,0,0,0.5); }
-        h1 { color: #fff; font-size: 1.8rem; border-bottom: 2px solid var(--accent-color); padding-bottom: 0.5rem; margin-top: 0; }
-        h2 { color: var(--accent-color); font-size: 1.3rem; margin-top: 1.5rem; }
-        p { color: var(--text-secondary); }
-        ul { padding-left: 20px; color: var(--text-secondary); }
-        li { margin-bottom: 0.5rem; }
-        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 2rem 0; }
-        .gallery img { width: 100%; height: 140px; object-fit: cover; border-radius: 6px; border: 1px solid var(--border-color); }
-        .features-box { background: #090d12; padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-color); margin: 1.5rem 0; }
-        .btn-container { display: flex; gap: 15px; flex-wrap: wrap; margin-top: 2rem; align-items: center; }
-        .btn-wa { display: inline-flex; align-items: center; gap: 8px; background: var(--whatsapp-color); color: #fff; padding: 0.8rem 1.5rem; border-radius: 30px; text-decoration: none; font-weight: bold; transition: opacity 0.2s; }
-        .btn-wa:hover { opacity: 0.9; }
-        .btn-site { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-color); color: #fff; padding: 0.8rem 1.5rem; border-radius: 30px; text-decoration: none; font-weight: bold; transition: opacity 0.2s; }
-        .btn-site:hover { opacity: 0.9; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .top-nav {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.8rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .top-nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .btn-top {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.55rem 1.1rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .btn-home {
+            background-color: #1e293b;
+            color: var(--accent-color);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-home:hover {
+            background-color: #334155;
+            transform: translateY(-2px);
+        }
+
+        .btn-wa-top {
+            background-color: rgba(37, 211, 102, 0.12);
+            color: #fff;
+            border: 1px solid var(--whatsapp-color);
+        }
+
+        .btn-wa-top:hover {
+            background-color: var(--whatsapp-color);
+            transform: translateY(-2px);
+        }
+
+        header {
+            background: linear-gradient(180deg, var(--card-bg) 0%, var(--bg-color) 100%);
+            padding: 3rem 1rem 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .badge-tag {
+            display: inline-block;
+            background-color: rgba(255, 107, 0, 0.15);
+            color: var(--accent-color);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(255, 107, 0, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #fff;
+            font-size: 2.4rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            margin-top: 0.8rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+
+        footer {
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 3.5rem 1rem 2rem 1rem;
+            text-align: center;
+            margin-top: 5rem;
+        }
+
+        .contact-box {
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .contact-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: #1e293b;
+            color: var(--accent-color);
+            padding: 0.85rem 2rem;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+            font-size: 1.05rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+            max-width: 90%;
+        }
+
+        .contact-link:hover {
+            background-color: #334155;
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .contact-link.whatsapp {
+            border-color: var(--whatsapp-color);
+            color: #fff;
+            background-color: rgba(37, 211, 102, 0.12);
+        }
+
+        .contact-link.whatsapp:hover {
+            background-color: var(--whatsapp-color);
+        }
+
+        .copyright-section {
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.8rem;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Atmosferik Motosiklet Su Enjeksiyon Performans Kiti</h1>
-        <p>Atmosferik motorlu motosikletler için özel olarak geliştirilmiş, motor içi sıcaklıkları düşüren ve verimliliği artıran profesyonel performans ve donanım ürünü.</p>
 
-        <div class="features-box">
-            <h2>Ürün Özellikleri ve Avantajları</h2>
-            <ul>
-                <li><strong>Daha Düşük Yanma Odası Sıcaklığı:</strong> Motor içi termal yükü azaltarak aşırı ısınmanın önüne geçer.</li>
-                <li><strong>Vuruntuyu Azaltır:</strong> Yanma kalitesini optimize ederek detonasyon riskini düşürür.</li>
-                <li><strong>Güç ve Tork Artışı Sağlar:</strong> Daha stabil ve güçlü bir motor tepkisi elde edilmesine yardımcı olur.</li>
-                <li><strong>Daha Verimli Yanma:</strong> Yakıtın homojen ve eksiksiz yanmasını destekler.</li>
-                <li><strong>Yüksek Devirlerde Stabilite:</strong> Agresif kullanımda ve yüksek devirlerde motor güvenliğini artırır.</li>
-            </ul>
-        </div>
-
-        <h2>Ürün Görselleri (Galeri)</h2>
-        <div class="gallery">
-            <img src="atmosferik-motosiklet-su-enjeksiyon-kiti-genel-gorunum.jpg" alt="Atmosferik Motosiklet Su Enjeksiyon Kiti Genel Görünüm">
-            <img src="atmosferik-motosiklet-su-enjeksiyon-bilesenleri.jpg" alt="Su Enjeksiyon Sistemi Bileşenleri">
-            <img src="atmosferik-motosiklet-su-enjeksiyon-motor-montaj.jpg" alt="Motor Montaj Detayı">
-            <img src="atmosferik-motosiklet-su-enjeksiyon-detay.jpg" alt="Sistem Detay Görseli">
-        </div>
-
-        <p><strong>Detaylı teknik bilgi, resmi e-ticaret siparişi ve diğer detaylar için resmi web sitemizi ziyaret edebilir ya da doğrudan WhatsApp hattımızdan bizimle iletişime geçebilirsiniz.</strong></p>
-
-        <div class="btn-container">
-            <a href="https://tr.bosphorusinnovations.com/urun/atmosferik_motosiklet/" target="_blank" class="btn-site">
-                🌐 Ürün Sayfesını İncele (Web)
+    <div class="top-nav">
+        <div class="top-nav-container">
+            <a href="index.html" class="btn-top btn-home">
+                ⬅️ Ana Sayfaya Dön
             </a>
-            <a href="https://api.whatsapp.com/send?phone=908503075458&text=Merhaba,%20atmosferik%20motosiklet%20ürünü%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn-wa">
-                💬 WhatsApp ile Bilgi Al
+            <a href="https://wa.me/908503075458" target="_blank" class="btn-top btn-wa-top">
+                💬 WhatsApp Destek Hattı
             </a>
         </div>
     </div>
+
+    <header>
+        <span class="badge-tag">Bosphorus Innovations Mühendisliği</span>
+        <h1>Atmosferik Sistemler</h1>
+        <p>Atmosferik araçlar ve performans donanımları için geliştirilmiş özel mühendislik çözümleri.</p>
+    </header>
+
+    <div class="container">
+        <!-- Atmosferik sayfasına ait içerikler buraya gelecek -->
+    </div>
+
+    <footer>
+        <div class="contact-box">
+            <a href="https://maps.google.com/maps?ll=41.032256,28.920015&z=17&t=m&hl=tr&gl=TR&mapclient=embed&cid=12095621459922215308" target="_blank" rel="noopener noreferrer" class="contact-link">
+                📍 Satış Adresi: Bosphorus Innovations (Bayrampaşa)
+            </a>
+            <a href="https://maps.app.goo.gl/QaksrKg1FVM9yrcQ9" target="_blank" rel="noopener noreferrer" class="contact-link">
+                🔧 Montaj Noktası: Exclusive Garage (Maslak)
+            </a>
+        </div>
+        <div class="copyright-section">
+            <p>&copy; 2026 xmaxmodifiye.com.tr - Tüm hakları saklıdır.</p>
+            <p>Bir Prodimar LTD ŞTİ markasıdır.</p>
+        </div>
+    </footer>
+
 </body>
 </html>

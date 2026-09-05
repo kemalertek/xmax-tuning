@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atmosferik | Bosphorus Innovations</title>
+    <title>Atmosferik Motosiklet Performans Ürünü | Bosphorus Innovations</title>
     <style>
         :root {
             --bg-color: #0b0f19;
@@ -14,7 +14,7 @@
             --text-secondary: #94a3b8;
             --border-color: #1e293b;
             --whatsapp-color: #25d366;
-            --paytr-color: #00a859;
+            --table-header: #1e293b;
         }
 
         body {
@@ -123,6 +123,90 @@
             padding: 2rem 1rem;
         }
 
+        h2 {
+            color: var(--accent-color);
+            font-size: 1.3rem;
+            margin-top: 1.5rem;
+        }
+
+        p {
+            color: var(--text-secondary);
+        }
+
+        ul {
+            padding-left: 20px;
+            color: var(--text-secondary);
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .features-box {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            margin: 1.5rem 0;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 2rem 0;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            align-items: center;
+        }
+
+        .btn-wa {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--whatsapp-color);
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: opacity 0.2s;
+        }
+
+        .btn-wa:hover {
+            opacity: 0.9;
+        }
+
+        .btn-site {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent-color);
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: opacity 0.2s;
+        }
+
+        .btn-site:hover {
+            opacity: 0.9;
+        }
+
         footer {
             background-color: var(--card-bg);
             border-top: 1px solid var(--border-color);
@@ -162,16 +246,6 @@
             transform: translateY(-2px);
         }
 
-        .contact-link.whatsapp {
-            border-color: var(--whatsapp-color);
-            color: #fff;
-            background-color: rgba(37, 211, 102, 0.12);
-        }
-
-        .contact-link.whatsapp:hover {
-            background-color: var(--whatsapp-color);
-        }
-
         .copyright-section {
             border-top: 1px solid var(--border-color);
             padding-top: 1.8rem;
@@ -195,12 +269,42 @@
 
     <header>
         <span class="badge-tag">Bosphorus Innovations Mühendisliği</span>
-        <h1>Atmosferik Sistemler</h1>
-        <p>Atmosferik araçlar ve performans donanımları için geliştirilmiş özel mühendislik çözümleri.</p>
+        <h1>Atmosferik Motosiklet Su Enjeksiyon Performans Kiti</h1>
+        <p>Atmosferik motorlu motosikletler için özel olarak geliştirilmiş, motor içi sıcaklıkları düşüren ve verimliliği artıran profesyonel performans ve donanım ürünü.</p>
     </header>
 
     <div class="container">
-        <!-- Atmosferik sayfasına ait içerikler buraya gelecek -->
+
+        <div class="features-box">
+            <h2>Ürün Özellikleri ve Avantajları</h2>
+            <ul>
+                <li><strong>Daha Düşük Yanma Odası Sıcaklığı:</strong> Motor içi termal yükü azaltarak aşırı ısınmanın önüne geçer.</li>
+                <li><strong>Vuruntuyu Azaltır:</strong> Yanma kalitesini optimize ederek detonasyon riskini düşürür.</li>
+                <li><strong>Güç ve Tork Artışı Sağlar:</strong> Daha stabil ve güçlü bir motor tepkisi elde edilmesine yardımcı olur.</li>
+                <li><strong>Daha Verimli Yanma:</strong> Yakıtın homojen ve eksiksiz yanmasını destekler.</li>
+                <li><strong>Yüksek Devirlerde Stabilite:</strong> Agresif kullanımda ve yüksek devirlerde motor güvenliğini artırır.</li>
+            </ul>
+        </div>
+
+        <h2>Ürün Görselleri (Galeri)</h2>
+        <div class="gallery">
+            <img src="atmosferik-motosiklet-su-enjeksiyon-kiti-genel-gorunum.jpg" alt="Atmosferik Motosiklet Su Enjeksiyon Kiti Genel Görünüm">
+            <img src="atmosferik-motosiklet-su-enjeksiyon-bilesenleri.jpg" alt="Su Enjeksiyon Sistemi Bileşenleri">
+            <img src="atmosferik-motosiklet-su-enjeksiyon-motor-montaj.jpg" alt="Motor Montaj Detayı">
+            <img src="atmosferik-motosiklet-su-enjeksiyon-detay.jpg" alt="Sistem Detay Görseli">
+        </div>
+
+        <p><strong>Detaylı teknik bilgi, resmi e-ticaret siparişi ve diğer detaylar için resmi web sitemizi ziyaret edebilir ya da doğrudan WhatsApp hattımızdan bizimle iletişime geçebilirsiniz.</strong></p>
+
+        <div class="btn-container">
+            <a href="https://tr.bosphorusinnovations.com/urun/atmosferik_motosiklet/" target="_blank" class="btn-site">
+                🌐 Ürün Sayfasını İncele (Web)
+            </a>
+            <a href="https://api.whatsapp.com/send?phone=908503075458&text=Merhaba,%20atmosferik%20motosiklet%20ürünü%20hakkında%20bilgi%20almak%20istiyorum." target="_blank" class="btn-wa">
+                💬 WhatsApp ile Bilgi Al
+            </a>
+        </div>
+
     </div>
 
     <footer>
